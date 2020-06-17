@@ -18,8 +18,13 @@ public class QuestionsBankService {
 	}
 	
 	public List<QuestionsBank> findQuestionsByQuizId(Quiz quiz){
-		return qbr.findQuestionsByQuiz(quiz);
+		return qbr.findQuestionsByQuizQuestion(quiz);
 		
+	}
+	
+	public String InsertQuestion(QuestionsBank qb) {
+		qbr.save(qb);
+		return "Question added successfully";
 	}
 
 }
