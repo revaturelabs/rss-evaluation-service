@@ -1,16 +1,15 @@
 package com.revature.entity;
 
-import java.util.List;
+//import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+//import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,23 +30,26 @@ public class Quiz {
 	@Column(name="CREATOR_EMAIL", nullable=false)
 	private String creatorEmail;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	//we will create one transient field for userId
+	private transient Long subjectId;
+		
+	@ManyToOne
     @JoinColumn(name = "SUBJECT_ID")
     private Subject subject;
 	
-	@OneToMany(mappedBy = "quiz")
-	private List<UserQuizScore> uqsList;
-	
-	@OneToMany(mappedBy = "quizQuestion")
-	private List<QuestionsBank> qbList;
+//	@OneToMany(mappedBy = "quiz")
+//	private List<UserQuizScore> uqsList;
+//	
+//	@OneToMany(mappedBy = "quizQuestion")
+//	private List<QuestionsBank> qbList;
 
-	public List<UserQuizScore> getUqsList() {
-		return uqsList;
-	}
-
-	public void setUqsList(List<UserQuizScore> uqsList) {
-		this.uqsList = uqsList;
-	}
+//	public List<UserQuizScore> getUqsList() {
+//		return uqsList;
+//	}
+//
+//	public void setUqsList(List<UserQuizScore> uqsList) {
+//		this.uqsList = uqsList;
+//	}
 
 	public Quiz() {
 		super();
@@ -85,6 +87,14 @@ public class Quiz {
 	public void setCreatorEmail(String creatorEmail) {
 		this.creatorEmail = creatorEmail;
 	}
+	
+	public Long getSubjectId() {
+		return subjectId;
+	}
+
+	public void setSubjectId(Long subjectId) {
+		this.subjectId = subjectId;
+	}
 
 	public Subject getSubject() {
 		return subject;
@@ -94,13 +104,20 @@ public class Quiz {
 		this.subject = subject;
 	}
 
-	public List<QuestionsBank> getQbList() {
-		return qbList;
-	}
+//	public List<QuestionsBank> getQbList() {
+//		return qbList;
+//	}
+//
+//	public void setQbList(List<QuestionsBank> qbList) {
+//		this.qbList = qbList;
+//	}
 
-	public void setQbList(List<QuestionsBank> qbList) {
-		this.qbList = qbList;
+	@Override
+	public String toString() {
+		return "Quiz [quizId=" + quizId + ", quizTopic=" + quizTopic + ", quizDescription=" + quizDescription
+				+ ", creatorEmail=" + creatorEmail + ", subject=" + subjectId  + "]";
 	}
+	
 	
 	
 }

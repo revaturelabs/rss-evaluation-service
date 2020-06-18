@@ -2,14 +2,13 @@ package com.revature.entity;
 
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,7 +29,10 @@ public class UserQuizScore {
 	@Column(name="SUBMIT_DATE", nullable=false, columnDefinition="TimeStamp")
 	private Timestamp submitDate;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	//we will create one transient field for userId
+	private transient Long quizId;
+	
+	@ManyToOne
     @JoinColumn(name = "QUIZ_ID")
     private Quiz quiz;
 
@@ -72,6 +74,20 @@ public class UserQuizScore {
 
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
+	}
+
+	public Long getQuizId() {
+		return quizId;
+	}
+
+	public void setQuizId(Long quizId) {
+		this.quizId = quizId;
+	}
+
+	@Override
+	public String toString() {
+		return "UserQuizScore [userScoreId=" + userScoreId + ", userEmail=" + userEmail + ", userScore=" + userScore
+				+ ", submitDate=" + submitDate + ", quiz=" + quizId + "]";
 	}
 	
 	
