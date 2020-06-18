@@ -1,7 +1,7 @@
 package com.revature.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,14 +15,24 @@ public class SubjectService {
 	@Autowired
 	SubjectRepository sr;
 	
-	public List<Subject> getAllSubjects() {
-        List<Subject> subjects = new ArrayList<Subject>();
-        sr.findAll().forEach(subject -> subjects.add(subject));
-        return subjects;
-    }
-	
+	public List<Subject> subjectList() {
+		return sr.findAll();
+	}
+
+	public Optional<Subject> findById(Long id) {
+		return sr.findById(id);
+	}
+
 	public String insertSubject(Subject s) {
 		sr.save(s);
-		return "Subject added successfully";
+		return "{'message':'Subject added successfully.'}";
 	}
+
+	public String deleteUser(Long id) {
+		sr.deleteById(id);
+		return "{'message':'Subject deleted successfully.'}";
+	}
+
+	
+	
 }

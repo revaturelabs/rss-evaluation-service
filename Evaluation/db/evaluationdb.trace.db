@@ -1,0 +1,6 @@
+2020-06-18 11:40:52 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SUBJECT" not found; SQL statement:
+select * from subject [42102-200]
+2020-06-18 11:40:52 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SUBJECT" not found; SQL statement:
+select * from subject [42102-200]

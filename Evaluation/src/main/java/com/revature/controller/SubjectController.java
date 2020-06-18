@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.entity.QuestionsBank;
 import com.revature.entity.Subject;
 import com.revature.service.SubjectService;
 
@@ -22,16 +21,16 @@ public class SubjectController {
 	@Autowired
     SubjectService ss;
 	
-	@GetMapping("/allsubjects")
-    private List<Subject> getAllSubjects() {
-        return ss.getAllSubjects();
+	@GetMapping("/all")
+    public List<Subject> getAllSubjects() {
+        return ss.subjectList();
     }
 	
-	 @RequestMapping(value = "/addsubject", method = RequestMethod.POST,
+	@RequestMapping(value = "/add", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	    @ResponseBody()
-	    public String insertSubject (@RequestBody Subject s) {
-			return this.ss.insertSubject(s);
+	@ResponseBody()
+	public String insertSubject (@RequestBody Subject s) {
+		return this.ss.insertSubject(s);
 			
-		}
+	}
 }
