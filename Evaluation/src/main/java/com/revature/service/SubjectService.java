@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.entity.Subject;
 import com.revature.repo.SubjectRepository;
 
+@Service
 public class SubjectService {
 	
 	@Autowired
@@ -19,4 +21,8 @@ public class SubjectService {
         return subjects;
     }
 	
+	public String insertSubject(Subject s) {
+		sr.save(s);
+		return "Subject successfully added";
+	}
 }
