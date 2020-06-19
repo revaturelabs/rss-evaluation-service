@@ -21,7 +21,6 @@ public class QuestionsBankController {
 	
 	@Autowired
 	QuestionsBankService qbs;
-	
 		
 	    @RequestMapping(value = "/add", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -30,7 +29,7 @@ public class QuestionsBankController {
 			return this.qbs.InsertQuestion(qb);
 			
 		}
-	    
+
 	    @SuppressWarnings("null")
 		@RequestMapping(value = "/addall", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
