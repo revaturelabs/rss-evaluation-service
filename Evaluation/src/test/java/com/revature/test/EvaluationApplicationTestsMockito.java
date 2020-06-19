@@ -11,10 +11,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.revature.entity.QuestionsBank;
 import com.revature.entity.Quiz;
 import com.revature.entity.Subject;
+import com.revature.repo.QuestionsBankRepository;
 import com.revature.repo.QuizRepository;
 import com.revature.repo.SubjectRepository;
+import com.revature.service.QuestionsBankService;
 import com.revature.service.QuizService;
 import com.revature.service.SubjectService;
 
@@ -25,12 +29,16 @@ class EvaluationApplicationTestsMockito {
 	private SubjectService subjectService;	
 	@Autowired
 	private QuizService quizService;
+	@Autowired
+	private QuestionsBankService questionsBankService;
 		
 	
 	@MockBean
 	private SubjectRepository subjectRepo;
 	@MockBean
 	private QuizRepository quizRepo;
+	@MockBean
+	private QuestionsBankRepository questionsBankRepo;
 	
 	
 	// Mockito Tests
@@ -79,7 +87,7 @@ class EvaluationApplicationTestsMockito {
 	
 	
 	@Test
-	public void getQuizBySubject() {
+	public void findQuizBySubjectTest() {
 		Subject subject = new Subject((long)2,"Test");
 		Quiz quiz = new Quiz((long)1, "Java Bean", " ", "test@rev.com", (long)2, subject);
 		
@@ -89,16 +97,80 @@ class EvaluationApplicationTestsMockito {
 		assertEquals(1, quizService.findQuizBySubject(1).size());
 	}
 	
-	@Test
-	public void deleteQuizByIdTest() {
+//	@Test
+//	public void findQuizByIdTest() {
+//		Subject subject = new Subject((long)2,"Test");
+//		Quiz quiz = new Quiz((long)1, "Java Bean", " ", "test@rev.com", (long)2, subject);
+//		
+//		when(quizRepo.findById((long)1).thenReturn(Stream
+//				.of(new Quiz()).collect(Collectors.toList()));
+//		
+//		assertEquals(1, quizService.findQuizBySubject(1).size());
+//	}
+	
+	
+	@Test 
+	void insertQuizTest() {
 		Subject subject = new Subject((long)2,"Test");
-		Quiz quiz = new Quiz((long)1, "Java Bean", " ", "test@rev.com", (long)2, subject);
+		Quiz quiz = new Quiz((long)1, "Java Bean", "test", "test@rev.com", (long)2, subject);
 		
-		quizService.deleteQuizById((long) 1);
-		verify(quizRepo,times(1)).deleteById((long)1);
-		
+		when(quizRepo.save(quiz)).thenReturn(quiz);
+		assertEquals(quiz, quizService.insertQuiz(quiz));		
 	}
 	
+//	@Test
+//	public void deleteQuizByIdTest() {
+//		Subject subject = new Subject((long)2,"Test");
+//		Quiz quiz = new Quiz((long)1, "Java Bean", " ", "test@rev.com", (long)2, subject);
+//		
+//		quizService.deleteQuizById((long) 1);
+//		verify(quizRepo,times(1)).deleteById((long)1);
+//		
+//	}
+	
+	
+	/** Test Methods in QuizBankService **/
+	
+	@Test
+	public void findAllQuestionsTest() {
+		QuestionsBank qb = new QuestionsBank();
+		qb.setQuestionId((long)1);
+		qb.setQuestionValue(5);
+		qb.setQuestion("Test");
+		qb.setOption1("option1");
+		qb.setOption2("option2");
+
+		when(questionsBankRepo.findAll()).thenReturn(Stream
+				.of(new QuestionsBank()).collect(Collectors.toList()));
+		
+		assertEquals(1, questionsBankService.findAllQuestions().size());
+	}
+	
+//	@Test
+//	public void findQuestionsByQuizIdTest() {
+//		Subject subject = new Subject((long)2,"Test");
+//		Quiz quiz = new Quiz((long)1, "Java Bean", " ", "test@rev.com", (long)2, subject);
+//		
+//		when(questionsBankRepo.findById((long)1).thenReturn(Stream
+//				.of(new QuestionsBank()).collect(Collectors.toList())));
+//		
+//		assertEquals(1, questionsBankService.findQuestionsByQuizId(quiz).size());
+//	}
+	
+	
+	@Test
+	public void insertQuestionTest() {
+		
+		QuestionsBank question = new QuestionsBank();
+		question.setQuestionId((long)1);
+		question.setQuestionValue(5);
+		question.setQuestion("Test");
+		question.setOption1("option1");
+		question.setOption2("option2");
+		
+		when(questionsBankRepo.save(question)).thenReturn(question);
+		assertEquals(question, questionsBankService.InsertQuestion(question));
+	}
 
 
 }
