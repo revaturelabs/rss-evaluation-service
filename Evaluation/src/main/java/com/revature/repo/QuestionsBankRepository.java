@@ -10,5 +10,6 @@ import com.revature.entity.Quiz;
 
 public interface QuestionsBankRepository extends JpaRepository<QuestionsBank, Long>, CrudRepository<QuestionsBank, Long> {
 
-	public List<QuestionsBank> findQuestionsByQuizQuestion(Quiz quiz);
+	public List<QuestionsBank> findQuestionsByQuiz(Quiz q);
+
 }

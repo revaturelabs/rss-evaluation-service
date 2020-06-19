@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.entity.QuestionsBank;
-import com.revature.entity.Quiz;
 import com.revature.repo.QuestionsBankRepository;
 import com.revature.repo.QuizRepository;
 import com.revature.repo.SubjectRepository;
@@ -28,12 +27,13 @@ public class QuestionsBankService {
 	public List<QuestionsBank> findAllQuestions(){
 		return qbr.findAll();
 	}
-	
-	public List<QuestionsBank> findQuestionsByQuizId(Quiz quiz){
-		return qbr.findQuestionsByQuizQuestion(quiz);
+		
+	public List<QuestionsBank> findQuestionsByQuiz(QuestionsBank qb){
+		qb.setQuiz(qr.findById(qb.getQuizId()).get());
+		return qbr.findQuestionsByQuiz(qb.getQuiz());
+		
 	}
 		
-	
 	public QuestionsBank InsertQuestion(QuestionsBank qb) {
 		qb.setQuiz(qr.findById(qb.getQuizId()).get()); 
 			return qbr.save(qb);

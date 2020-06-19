@@ -1,5 +1,8 @@
 package com.revature.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.entity.Question;
 import com.revature.entity.QuestionsBank;
 import com.revature.service.QuestionsBankService;
 
@@ -25,6 +29,44 @@ public class QuestionsBankController {
 			return this.qbs.InsertQuestion(qb);
 			
 		}
+
+	    @SuppressWarnings("null")
+		@RequestMapping(value = "/addall", method = RequestMethod.POST,
+	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	    @ResponseBody()
+	    public List<QuestionsBank> insertAllQuestions (@RequestBody List<QuestionsBank> qbList) {
+	    	List<QuestionsBank> qbList1 = new ArrayList<QuestionsBank>();
+	    	for (int i = 0; i < qbList.size(); i++) {
+	    		qbList1.add(qbs.InsertQuestion(qbList.get(i)));
+	    	}
+	    	return qbList1;
+			
+		}
 	    
-	    
+		@RequestMapping(value = "/getquestions", method = RequestMethod.GET,
+	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	    @ResponseBody()
+	    public List<Question> getQuestionsByQuizId (@RequestBody QuestionsBank qb) {
+			
+	    	List<QuestionsBank> qbList;
+			List<Question> qList= new ArrayList<Question>();
+			Question q = null;
+			
+	    	qbList = this.qbs.findQuestionsByQuiz(qb);
+	    	
+	    	for (int i = 0; i < qbList.size(); i++) {
+	    		q = new Question();
+			    q.setQuestionId(qbList.get(i).getQuestionId());
+			    q.setQuestionValue(qbList.get(i).getQuestionValue());
+			    q.setQuestion(qbList.get(i).getQuestion());
+			    q.setOption1(qbList.get(i).getOption1());
+			    q.setOption2(qbList.get(i).getOption2());
+			    q.setOption3(qbList.get(i).getOption3());
+			    q.setOption4(qbList.get(i).getOption4());
+			    q.setOption5(qbList.get(i).getOption5());
+			    qList.add(q);
+			}
+			return qList;
+			
+		}
 }

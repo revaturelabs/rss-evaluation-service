@@ -11,6 +11,8 @@ import com.revature.entity.Subject;
 public interface QuizRepository extends JpaRepository<Quiz, Long>, CrudRepository<Quiz, Long> {
 	
 	public List<Quiz> findQuizBySubject(Subject subject);
-	
-	
+		
+
 }
+
+
