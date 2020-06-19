@@ -39,9 +39,5 @@ public class QuestionsBankService {
 			return qbr.save(qb);
 	}
 	
-	public String InsertQuestion(QuestionsBank qb) {
-		qbr.save(qb);
-		return "Question has been added";
-	}
 
 }

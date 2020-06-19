@@ -42,7 +42,7 @@ public class QuizService {
 		return qr.save(q);
 	}
 
-	public String deleteQuiz(Long id) {
+	public String deleteQuizById(Long id) {
 		qr.deleteById(id);
 		return "{'message':'address deleted successfully'}";
 	}
