@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.entity.Question;
 import com.revature.entity.QuestionsBank;
 import com.revature.repo.QuestionsBankRepository;
 import com.revature.repo.QuizRepository;
