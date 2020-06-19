@@ -47,8 +47,8 @@ public class QuestionsBank {
 		
 	@ManyToOne
     @JoinColumn(name = "QUIZ_ID")
+
     private Quiz quiz;
-	
 	
 
 	public QuestionsBank() {
@@ -132,6 +132,7 @@ public class QuestionsBank {
 		return quiz;
 	}
 
+
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
 	}
@@ -144,13 +145,6 @@ public class QuestionsBank {
 		this.quizId = quizId;
 	}
 
-	public Quiz getQuizQuestion() {
-		return quiz;
-	}
-
-	public void setQuizQuestion(Quiz quiz) {
-		this.quiz = quiz;
-	}
 
 	@Override
 	public String toString() {
@@ -159,6 +153,7 @@ public class QuestionsBank {
 				+ ", option5=" + option5 + ", correctAnswer=" + correctAnswer + ", quiz=" + quizId + "]";
 	}
 	
-		
-	
+
 }
+
+

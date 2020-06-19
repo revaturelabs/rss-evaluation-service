@@ -22,25 +22,16 @@ public class QuestionsBankController {
 	
 	@Autowired
 	QuestionsBankService qbs;
-<<<<<<< HEAD
 
-	
-	 @RequestMapping(value = "/add", method = RequestMethod.POST,
-=======
-	
 		
 	    @RequestMapping(value = "/add", method = RequestMethod.POST,
->>>>>>> b05b3b48f99930e0ceb8fa766c72f4da813f8bb2
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	 @ResponseBody()
 	 public QuestionsBank insertQuestion (@RequestBody QuestionsBank qb) {
 		 return this.qbs.InsertQuestion(qb);
 			
-<<<<<<< HEAD
-	}
-=======
 		}
-	    
+
 	    @SuppressWarnings("null")
 		@RequestMapping(value = "/addall", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -53,7 +44,6 @@ public class QuestionsBankController {
 	    	return qbList1;
 			
 		}
->>>>>>> b05b3b48f99930e0ceb8fa766c72f4da813f8bb2
 	    
 		@RequestMapping(value = "/getquestions", method = RequestMethod.GET,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

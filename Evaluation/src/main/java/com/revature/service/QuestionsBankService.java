@@ -27,7 +27,7 @@ public class QuestionsBankService {
 	public List<QuestionsBank> findAllQuestions(){
 		return qbr.findAll();
 	}
-	
+		
 	public List<QuestionsBank> findQuestionsByQuiz(QuestionsBank qb){
 		qb.setQuiz(qr.findById(qb.getQuizId()).get());
 		return qbr.findQuestionsByQuiz(qb.getQuiz());
