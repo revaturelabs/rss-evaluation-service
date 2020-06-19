@@ -1,13 +1,12 @@
 package com.revature.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -43,7 +42,10 @@ public class QuestionsBank {
 	@Column(name="CORRECT_ANSWER", nullable=false)
 	private String correctAnswer;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	//we will create one transient field for userId
+	private transient Long quizId;
+		
+	@ManyToOne
     @JoinColumn(name = "QUIZ_ID")
     private Quiz quizQuestion;
 
@@ -130,6 +132,29 @@ public class QuestionsBank {
 
 	public void setQuiz(Quiz quiz) {
 		this.quizQuestion = quiz;
+	}
+
+	public Long getQuizId() {
+		return quizId;
+	}
+
+	public void setQuizId(Long quizId) {
+		this.quizId = quizId;
+	}
+
+	public Quiz getQuizQuestion() {
+		return quizQuestion;
+	}
+
+	public void setQuizQuestion(Quiz quizQuestion) {
+		this.quizQuestion = quizQuestion;
+	}
+
+	@Override
+	public String toString() {
+		return "QuestionsBank [questionId=" + questionId + ", questionValue=" + questionValue + ", question=" + question
+				+ ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3 + ", option4=" + option4
+				+ ", option5=" + option5 + ", correctAnswer=" + correctAnswer + ", quiz=" + quizId + "]";
 	}
 	
 		
