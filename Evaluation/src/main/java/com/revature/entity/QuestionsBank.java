@@ -47,7 +47,9 @@ public class QuestionsBank {
 		
 	@ManyToOne
     @JoinColumn(name = "QUIZ_ID")
-    private Quiz quizQuestion;
+    private Quiz quiz;
+	
+	
 
 	public QuestionsBank() {
 		super();
@@ -127,11 +129,11 @@ public class QuestionsBank {
 	}
 
 	public Quiz getQuiz() {
-		return quizQuestion;
+		return quiz;
 	}
 
 	public void setQuiz(Quiz quiz) {
-		this.quizQuestion = quiz;
+		this.quiz = quiz;
 	}
 
 	public Long getQuizId() {
@@ -143,11 +145,11 @@ public class QuestionsBank {
 	}
 
 	public Quiz getQuizQuestion() {
-		return quizQuestion;
+		return quiz;
 	}
 
-	public void setQuizQuestion(Quiz quizQuestion) {
-		this.quizQuestion = quizQuestion;
+	public void setQuizQuestion(Quiz quiz) {
+		this.quiz = quiz;
 	}
 
 	@Override

@@ -46,7 +46,7 @@ public class QuizController {
 		//return this.qs.findQuizBySubject(q.getSubjectId());
 		List<Quiz> q1 = qs.findQuizBySubject(q.getSubjectId());
 		for (int i = 0; i < q1.size(); i++) {
-		    q1.get(i).setSubjectId(q.getSubjectId());;
+		    q1.get(i).setSubjectId(q.getSubjectId());
 		}
 		return q1;
 	}
