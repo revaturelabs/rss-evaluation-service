@@ -31,6 +31,19 @@ public class QuestionsBankController {
 			
 		}
 	    
+	    @SuppressWarnings("null")
+		@RequestMapping(value = "/addall", method = RequestMethod.POST,
+	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	    @ResponseBody()
+	    public List<QuestionsBank> insertAllQuestions (@RequestBody List<QuestionsBank> qbList) {
+	    	List<QuestionsBank> qbList1 = new ArrayList<QuestionsBank>();
+	    	for (int i = 0; i < qbList.size(); i++) {
+	    		qbList1.add(qbs.InsertQuestion(qbList.get(i)));
+	    	}
+	    	return qbList1;
+			
+		}
+	    
 		@RequestMapping(value = "/getquestions", method = RequestMethod.GET,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
