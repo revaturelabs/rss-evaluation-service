@@ -24,7 +24,7 @@ public class QuestionsBankController {
 	QuestionsBankService qbs;
 
 		
-	    @RequestMapping(value = "/add", method = RequestMethod.POST,
+	 @RequestMapping(value = "/add", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	 @ResponseBody()
 	 public QuestionsBank insertQuestion (@RequestBody QuestionsBank qb) {

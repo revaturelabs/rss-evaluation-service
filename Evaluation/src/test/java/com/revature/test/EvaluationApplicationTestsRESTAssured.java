@@ -32,6 +32,7 @@ class EvaluationApplicationTestsRESTAssured {
 		System.out.println("Data retrieved is :" + data);
 	}	
 	
+	
 	@Test
 	public void testSubjecControllerGetAllSubjects() {
 		
@@ -39,5 +40,7 @@ class EvaluationApplicationTestsRESTAssured {
 		.then().assertThat().statusCode(200)
 		.body("size",is(0));
 	}
+	
+	
 
 }
