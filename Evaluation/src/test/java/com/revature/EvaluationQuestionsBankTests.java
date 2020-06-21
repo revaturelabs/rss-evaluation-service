@@ -18,10 +18,8 @@ class EvaluationQuestionsBankTests {
 	@Test
 	public void insertQuestion() throws Exception{
 		QuestionsBank q = new QuestionsBank();
-		Quiz quiz = new Quiz();
-		Long qid = (long) 450;
-		quiz.setQuizId(qid);
-		q.setQuiz(quiz);
+		long id = 1;
+		q.setQuizId(id);
 		q.setQuestion("What is Java?");
 		q.setCorrectAnswer("Object Oriented Programming Language");
 		q.setOption1("Object Oriented Programming Language");
