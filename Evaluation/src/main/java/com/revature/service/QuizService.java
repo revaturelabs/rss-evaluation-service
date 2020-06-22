@@ -44,7 +44,11 @@ public class QuizService {
 
 	public String deleteQuizById(Long id) {
 		qr.deleteById(id);
-		return "{'message':'address deleted successfully'}";
+		return "{'message':'Quiz deleted successfully'}";
+	}
+	
+	public List<Quiz> getAllQuizzes(){
+		return this.qr.findAll();
 	}
 	
 }

@@ -47,7 +47,6 @@ public class QuestionsBank {
 		
 	@ManyToOne
     @JoinColumn(name = "QUIZ_ID")
-
     private Quiz quiz;
 	
 
