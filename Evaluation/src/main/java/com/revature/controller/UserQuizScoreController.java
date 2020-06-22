@@ -1,6 +1,7 @@
 package com.revature.controller;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,13 +21,15 @@ public class UserQuizScoreController {
 	@Autowired
 	UserQuizScoreService uqss;
 	
-	@RequestMapping(value = "/add", method = RequestMethod.POST,
+	@RequestMapping(value = "/takenquiz", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody()
-    public UserQuizScore insertQuestion (@RequestBody UserQuizScore uqs) {
-		Date d = new Date();
-		uqs.setSubmitDate(d);
-		return this.uqss.InsertUserQuizScore(uqs);
+    public List<Long> getTakenQuiz (@RequestBody UserQuizScore uqs) {
+		List<Long> takenQuiz = new ArrayList<>();
+		takenQuiz = uqss.getTakenQuiz(uqs.getUserEmail());
+		return takenQuiz;
 		
 	}
+	
+	
 }

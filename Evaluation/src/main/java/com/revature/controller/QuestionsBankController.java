@@ -1,6 +1,7 @@
 package com.revature.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.entity.Question;
 import com.revature.entity.QuestionsBank;
 import com.revature.entity.Result;
+import com.revature.entity.UserQuizScore;
 import com.revature.service.QuestionsBankService;
+import com.revature.service.UserQuizScoreService;
 
 @RestController
 @RequestMapping(value="/question")
@@ -22,6 +25,9 @@ public class QuestionsBankController {
 	
 	@Autowired
 	QuestionsBankService qbs;
+	
+	@Autowired
+	UserQuizScoreService uqss;
 		
 	    @RequestMapping(value = "/add", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -48,20 +54,34 @@ public class QuestionsBankController {
 	    @ResponseBody()
 	    public Result calculatePoints (@RequestBody List<Question> qList) {
 	    	QuestionsBank qb = null;
+	    	UserQuizScore uqs = new UserQuizScore();
 	    	Result result = new Result();
+	    	String userEmail = null;
+	    	long quizId = 0;
 	    	int correctAnswers = 0;
 	    	int totalPoints = 0;
 	    	int totalQuestions =qList.size();
+	    	Date date = new Date();
 	    	
 	    	for (int i = 0; i < qList.size(); i++) {
+	    		
 	    		qb = new QuestionsBank();
 	    		qb=(qbs.getQuestion(qList.get(i).getQuestionId()).get());
+	    		userEmail = qList.get(i).getUserEmail();
+	    		quizId = qb.getQuiz().getQuizId();
 	    		
 	    		if(qList.get(i).getSelectedAnswer().equalsIgnoreCase(qb.getCorrectAnswer())){
 	    			totalPoints += qList.get(i).getQuestionValue();
 	    			correctAnswers++;
 	    		}
 	    	}
+	    	
+	    	uqs.setSubmitDate(date);
+	    	uqs.setUserEmail(userEmail);
+	    	uqs.setQuizId(quizId);
+	    	uqs.setUserScore(totalPoints);
+	    	
+	    	uqss.InsertUserQuizScore(uqs);
 	    	
 	    	result.setTotalQuestions(totalQuestions);
 	    	result.setCorrectAnswers(correctAnswers);
@@ -70,7 +90,7 @@ public class QuestionsBankController {
 	    	return result;
 		}
 	    
-		@RequestMapping(value = "/getquestions", method = RequestMethod.GET,
+		@RequestMapping(value = "/getquestions", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
 	    public List<Question> getQuestionsByQuizId (@RequestBody QuestionsBank qb) {

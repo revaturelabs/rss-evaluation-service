@@ -24,6 +24,8 @@ public class Question {
 	private String option5;
 	
 	private String selectedAnswer;
+	
+	private String userEmail;
 
 	public Question() {
 		super();
@@ -99,6 +101,14 @@ public class Question {
 
 	public void setSelectedAnswer(String selectedAnswer) {
 		this.selectedAnswer = selectedAnswer;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 	@Override
