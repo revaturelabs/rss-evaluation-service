@@ -22,6 +22,8 @@ public class Question {
 	private String option4;
 	
 	private String option5;
+	
+	private String selectedAnswer;
 
 	public Question() {
 		super();
@@ -90,13 +92,20 @@ public class Question {
 	public void setOption5(String option5) {
 		this.option5 = option5;
 	}
+	
+	public String getSelectedAnswer() {
+		return selectedAnswer;
+	}
+
+	public void setSelectedAnswer(String selectedAnswer) {
+		this.selectedAnswer = selectedAnswer;
+	}
 
 	@Override
 	public String toString() {
 		return "Question [questionId=" + questionId + ", questionValue=" + questionValue + ", question=" + question
 				+ ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3 + ", option4=" + option4
-				+ ", option5=" + option5 + "]";
+				+ ", option5=" + option5 + ", selectedAnswer=" + selectedAnswer + "]";
 	}
-	
-	
+
 }

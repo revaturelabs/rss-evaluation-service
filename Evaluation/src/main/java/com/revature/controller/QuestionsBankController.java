@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.entity.Question;
 import com.revature.entity.QuestionsBank;
+import com.revature.entity.Result;
 import com.revature.service.QuestionsBankService;
 
 @RestController
@@ -30,7 +31,6 @@ public class QuestionsBankController {
 			
 		}
 
-	    @SuppressWarnings("null")
 		@RequestMapping(value = "/addall", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
@@ -41,6 +41,33 @@ public class QuestionsBankController {
 	    	}
 	    	return qbList1;
 			
+		}
+		
+		@RequestMapping(value = "/submitquiz", method = RequestMethod.POST,
+	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	    @ResponseBody()
+	    public Result calculatePoints (@RequestBody List<Question> qList) {
+	    	QuestionsBank qb = null;
+	    	Result result = new Result();
+	    	int correctAnswers = 0;
+	    	int totalPoints = 0;
+	    	int totalQuestions =qList.size();
+	    	
+	    	for (int i = 0; i < qList.size(); i++) {
+	    		qb = new QuestionsBank();
+	    		qb=(qbs.getQuestion(qList.get(i).getQuestionId()).get());
+	    		
+	    		if(qList.get(i).getSelectedAnswer().equalsIgnoreCase(qb.getCorrectAnswer())){
+	    			totalPoints += qList.get(i).getQuestionValue();
+	    			correctAnswers++;
+	    		}
+	    	}
+	    	
+	    	result.setTotalQuestions(totalQuestions);
+	    	result.setCorrectAnswers(correctAnswers);
+	    	result.setTotalPoints(totalPoints);
+	    	
+	    	return result;
 		}
 	    
 		@RequestMapping(value = "/getquestions", method = RequestMethod.GET,

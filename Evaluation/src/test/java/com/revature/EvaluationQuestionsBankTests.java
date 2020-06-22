@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.revature.controller.QuestionsBankController;
 import com.revature.entity.QuestionsBank;
-import com.revature.entity.Quiz;
 
 @SpringBootTest
 class EvaluationQuestionsBankTests {
