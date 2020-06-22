@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.entity.Question;
 import com.revature.entity.QuestionsBank;
 import com.revature.service.QuestionsBankService;
+import com.revature.util.LogThis;
 
 @RestController
 @RequestMapping(value="/question")
@@ -27,6 +28,8 @@ public class QuestionsBankController {
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
 	    public QuestionsBank insertQuestion (@RequestBody QuestionsBank qb) {
+	    	//Log4j
+	    	LogThis.LogIt("info","Question added");
 			return this.qbs.InsertQuestion(qb);
 			
 		}
@@ -40,6 +43,8 @@ public class QuestionsBankController {
 	    	for (int i = 0; i < qbList.size(); i++) {
 	    		qbList1.add(qbs.InsertQuestion(qbList.get(i)));
 	    	}
+	    	//Log4j
+	    	LogThis.LogIt("info","Multiple Question added");
 	    	return qbList1;
 			
 		}
