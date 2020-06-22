@@ -50,4 +50,10 @@ public class QuizController {
 		}
 		return q1;
 	}
+	
+	@RequestMapping(value = "/getallquizzes", method = RequestMethod.GET)
+	@ResponseBody()
+	public List<Quiz> getAllQuizzes(){
+		return this.qs.getAllQuizzes();
+	}
 }

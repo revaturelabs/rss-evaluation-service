@@ -45,7 +45,7 @@ public class QuestionsBankController {
 			
 		}
 	    
-		@RequestMapping(value = "/getquestions", method = RequestMethod.GET,
+		@RequestMapping(value = "/getquestions", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
 	    public List<Question> getQuestionsByQuizId (@RequestBody QuestionsBank qb) {
