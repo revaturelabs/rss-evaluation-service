@@ -1,4 +1,4 @@
-package com.revature.test;
+package com.revature;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
@@ -23,7 +23,7 @@ import com.revature.service.QuizService;
 import com.revature.service.SubjectService;
 
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.DEFINED_PORT)
-class EvaluationApplicationTestsMockito {
+class EvaluationAppTestsMockito {
 	
 	@Autowired
 	private SubjectService subjectService;	
