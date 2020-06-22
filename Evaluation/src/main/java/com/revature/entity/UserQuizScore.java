@@ -1,6 +1,6 @@
 package com.revature.entity;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +27,7 @@ public class UserQuizScore {
 	private int userScore;
 	
 	@Column(name="SUBMIT_DATE", nullable=false, columnDefinition="TimeStamp")
-	private Timestamp submitDate;
+	private Date submitDate;
 	
 	//we will create one transient field for userId
 	private transient Long quizId;
@@ -60,11 +60,11 @@ public class UserQuizScore {
 		this.userScore = userScore;
 	}
 
-	public Timestamp getSubmitDate() {
+	public Date getSubmitDate() {
 		return submitDate;
 	}
 
-	public void setSubmitDate(Timestamp submitDate) {
+	public void setSubmitDate(Date submitDate) {
 		this.submitDate = submitDate;
 	}
 

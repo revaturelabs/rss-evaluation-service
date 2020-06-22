@@ -1,6 +1,7 @@
 package com.revature.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +31,11 @@ public class QuestionsBankService {
 		
 	public List<QuestionsBank> findQuestionsByQuiz(QuestionsBank qb){
 		qb.setQuiz(qr.findById(qb.getQuizId()).get());
-		return qbr.findQuestionsByQuiz(qb.getQuiz());
-		
+		return qbr.findQuestionsByQuiz(qb.getQuiz());	
+	}
+	
+	public Optional<QuestionsBank> getQuestion(long qId){
+		return qbr.findById(qId);
 	}
 		
 	public QuestionsBank InsertQuestion(QuestionsBank qb) {
