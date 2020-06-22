@@ -49,5 +49,9 @@ public class QuizService {
 		return "{'message':'address deleted successfully'}";
 	}
 	
+	public List<Quiz> getAllQuizzes(){
+		return this.qr.findAll();
+	}
+	
 }
 
