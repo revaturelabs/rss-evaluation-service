@@ -19,8 +19,12 @@ import com.revature.entity.UserQuizScore;
 import com.revature.service.QuestionsBankService;
 import com.revature.service.UserQuizScoreService;
 
+import com.revature.util.LogThis;
+
+
 @RestController
 @RequestMapping(value="/question")
+
 public class QuestionsBankController {
 	
 	@Autowired
@@ -28,14 +32,16 @@ public class QuestionsBankController {
 	
 	@Autowired
 	UserQuizScoreService uqss;
-		
-	    @RequestMapping(value = "/add", method = RequestMethod.POST,
+
+	 @RequestMapping(value = "/add", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+
 	    @ResponseBody()
 	    public QuestionsBank insertQuestion (@RequestBody QuestionsBank qb) {
+	    	//Log4j
+	    	LogThis.LogIt("info","Question added");
 			return this.qbs.InsertQuestion(qb);
-			
-		}
+	 	}
 
 		@RequestMapping(value = "/addall", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -45,6 +51,8 @@ public class QuestionsBankController {
 	    	for (int i = 0; i < qbList.size(); i++) {
 	    		qbList1.add(qbs.InsertQuestion(qbList.get(i)));
 	    	}
+	    	//Log4j
+	    	LogThis.LogIt("info","Multiple Question added");
 	    	return qbList1;
 			
 		}

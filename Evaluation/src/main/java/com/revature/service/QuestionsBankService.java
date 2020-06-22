@@ -42,5 +42,6 @@ public class QuestionsBankService {
 		qb.setQuiz(qr.findById(qb.getQuizId()).get()); 
 			return qbr.save(qb);
 	}
+	
 
 }

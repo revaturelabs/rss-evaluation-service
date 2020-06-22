@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.entity.Subject;
 import com.revature.service.SubjectService;
+import com.revature.util.LogThis;
 
 @RestController
 @RequestMapping(value="/subject")
@@ -30,6 +31,8 @@ public class SubjectController {
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody()
 	public String insertSubject (@RequestBody Subject s) {
+		//Log4j
+		LogThis.LogIt("info","Subject added"+""+s.getSubjectName());
 		return this.ss.insertSubject(s);
 			
 	}

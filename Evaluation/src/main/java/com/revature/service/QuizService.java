@@ -39,12 +39,18 @@ public class QuizService {
 
 	public Quiz insertQuiz(Quiz q) { 
 		q.setSubject(sr.findById(q.getSubjectId()).get()); 
-		return qr.save(q);
+		//return qr.save(q);
+		qr.save(q);
+		return q;
 	}
 
-	public String deleteQuiz(Long id) {
+	public String deleteQuizById(Long id) {
 		qr.deleteById(id);
 		return "{'message':'Quiz deleted successfully'}";
+	}
+	
+	public List<Quiz> getAllQuizzes(){
+		return this.qr.findAll();
 	}
 	
 }

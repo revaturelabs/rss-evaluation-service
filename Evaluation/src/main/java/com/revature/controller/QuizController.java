@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.entity.Quiz;
 import com.revature.service.QuizService;
+import com.revature.util.LogThis;
 
 @RestController
 @RequestMapping(value="/quiz")
@@ -24,6 +25,8 @@ public class QuizController {
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody()
 	public Quiz insertQuiz (@RequestBody Quiz q) {
+		//Log4j
+		LogThis.LogIt("info","Quiz added"+" "+q.getQuizTopic());
 		System.out.println(q);
 		return this.qs.insertQuiz(q);
 	}
@@ -49,5 +52,11 @@ public class QuizController {
 		    q1.get(i).setSubjectId(q.getSubjectId());
 		}
 		return q1;
+	}
+	
+	@RequestMapping(value = "/getallquizzes", method = RequestMethod.GET)
+	@ResponseBody()
+	public List<Quiz> getAllQuizzes(){
+		return this.qs.getAllQuizzes();
 	}
 }

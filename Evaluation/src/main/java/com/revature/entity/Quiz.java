@@ -55,6 +55,18 @@ public class Quiz {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public Quiz(long quizId, String quizTopic, String quizDescription, String creatorEmail, Long subjectId,
+			Subject subject) {
+		super();
+		this.quizId = quizId;
+		this.quizTopic = quizTopic;
+		this.quizDescription = quizDescription;
+		this.creatorEmail = creatorEmail;
+		this.subjectId = subjectId;
+		this.subject = subject;
+	}
 
 	public long getQuizId() {
 		return quizId;
