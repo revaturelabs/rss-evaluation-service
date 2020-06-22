@@ -18,22 +18,23 @@ import com.revature.util.LogThis;
 
 @RestController
 @RequestMapping(value="/question")
+
 public class QuestionsBankController {
 	
 	@Autowired
 	QuestionsBankService qbs;
-	
+
 		
-	    @RequestMapping(value = "/add", method = RequestMethod.POST,
+	 @RequestMapping(value = "/add", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+
 	    @ResponseBody()
 	    public QuestionsBank insertQuestion (@RequestBody QuestionsBank qb) {
 	    	//Log4j
 	    	LogThis.LogIt("info","Question added");
 			return this.qbs.InsertQuestion(qb);
-			
-		}
-	    
+	 	}
+
 	    @SuppressWarnings("null")
 		@RequestMapping(value = "/addall", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
