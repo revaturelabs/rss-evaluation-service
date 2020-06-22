@@ -17,16 +17,18 @@ import com.revature.service.QuestionsBankService;
 
 @RestController
 @RequestMapping(value="/question")
+
 public class QuestionsBankController {
 	
 	@Autowired
 	QuestionsBankService qbs;
+
 		
-	    @RequestMapping(value = "/add", method = RequestMethod.POST,
+	 @RequestMapping(value = "/add", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	    @ResponseBody()
-	    public QuestionsBank insertQuestion (@RequestBody QuestionsBank qb) {
-			return this.qbs.InsertQuestion(qb);
+	 @ResponseBody()
+	 public QuestionsBank insertQuestion (@RequestBody QuestionsBank qb) {
+		 return this.qbs.InsertQuestion(qb);
 			
 		}
 

@@ -31,6 +31,13 @@ public class Subject {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public Subject(long subjectId, String subjectName) {
+		super();
+		this.subjectId = subjectId;
+		this.subjectName = subjectName;
+	}
 
 	public long getSubjectId() {
 		return subjectId;

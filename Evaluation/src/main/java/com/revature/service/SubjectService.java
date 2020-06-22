@@ -28,11 +28,10 @@ public class SubjectService {
 		return "{'message':'Subject added successfully.'}";
 	}
 
-	public String deleteUser(Long id) {
+	public String deleteSubjectById(Long id) {
 		sr.deleteById(id);
 		return "{'message':'Subject deleted successfully.'}";
 	}
 
-	
-	
+
 }
