@@ -39,9 +39,7 @@ public class QuizService {
 
 	public Quiz insertQuiz(Quiz q) { 
 		q.setSubject(sr.findById(q.getSubjectId()).get()); 
-		//return qr.save(q);
-		qr.save(q);
-		return q;
+		return qr.save(q);
 	}
 
 	public String deleteQuizById(Long id) {
