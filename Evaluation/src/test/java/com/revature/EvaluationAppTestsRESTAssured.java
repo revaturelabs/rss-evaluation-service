@@ -10,7 +10,7 @@ import com.revature.entity.Quiz;
 import io.restassured.http.ContentType;
 
 
-@SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.DEFINED_PORT)
+// @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.DEFINED_PORT)
 class EvaluationAppTestsRESTAssured {
 	
 	

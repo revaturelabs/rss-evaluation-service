@@ -74,7 +74,7 @@ public class QuestionsBankController {
 	    	for (int i = 0; i < qList.size(); i++) {
 	    		
 	    		qb = new QuestionsBank();
-	    		qb=(qbs.getQuestion(qList.get(i).getQuestionId()).get());
+	    		qb=(qbs.getQuestion(qList.get(i).getQuestionId()));
 	    		userEmail = qList.get(i).getUserEmail();
 	    		quizId = qb.getQuiz().getQuizId();
 	    		

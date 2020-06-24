@@ -34,8 +34,10 @@ public class QuestionsBankService {
 		return qbr.findQuestionsByQuiz(qb.getQuiz());	
 	}
 	
-	public Optional<QuestionsBank> getQuestion(long qId){
-		return qbr.findById(qId);
+	public QuestionsBank getQuestion(long qId){
+		QuestionsBank qb = new QuestionsBank();
+		qb = qbr.findById(qId).get();
+		return qb;
 	}
 		
 	public QuestionsBank InsertQuestion(QuestionsBank qb) {

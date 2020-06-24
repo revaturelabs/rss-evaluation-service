@@ -36,7 +36,7 @@ public class QuizController {
 	@ResponseBody()
 	public Quiz findQuizById (@RequestBody Quiz q) {
 		System.out.println(q);
-		Quiz q1 = qs.findById(q.getQuizId()).get();
+		Quiz q1 = qs.findById(q.getQuizId());
 		q1.setSubjectId(q1.getSubject().getSubjectId());
 		return q1;
 	}

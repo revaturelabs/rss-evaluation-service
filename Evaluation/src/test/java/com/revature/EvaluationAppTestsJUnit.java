@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import com.revature.controller.QuestionsBankController;
 import com.revature.controller.QuizController;
 import com.revature.controller.SubjectController;
@@ -15,7 +14,6 @@ import com.revature.entity.QuestionsBank;
 import com.revature.entity.Quiz;
 import com.revature.entity.Subject;
 
-@SpringBootTest
 class EvaluationAppTestsJUnit {
 	
 	@Autowired
