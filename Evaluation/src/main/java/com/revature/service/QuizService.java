@@ -31,9 +31,9 @@ public class QuizService {
 		return qr.findQuizBySubject(sr.findById(sId).get());
 	}
 	
-	public Optional<Quiz> findById(Long id) {
-		Optional<Quiz> q = qr.findById(id);
-		q.get().setSubjectId(q.get().getSubject().getSubjectId());
+	public Quiz findById(Long id) {
+		Quiz q = qr.findById(id).get();
+		q.setSubjectId(q.getSubject().getSubjectId());
 		return q;
 	}
 

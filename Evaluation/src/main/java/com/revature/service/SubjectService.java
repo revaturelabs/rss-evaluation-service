@@ -19,8 +19,9 @@ public class SubjectService {
 		return sr.findAll();
 	}
 
-	public Optional<Subject> findById(Long id) {
-		return sr.findById(id);
+	public Subject findById(Long id) {	
+		return sr.findById(id).get();
+		
 	}
 
 	public String insertSubject(Subject s) {
