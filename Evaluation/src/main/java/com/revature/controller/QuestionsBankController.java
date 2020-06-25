@@ -42,6 +42,16 @@ public class QuestionsBankController {
 	    	LogThis.LogIt("info","Question added");
 			return this.qbs.InsertQuestion(qb);
 	 	}
+	 
+	 @RequestMapping(value = "/delete", method = RequestMethod.POST,
+	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+
+	    @ResponseBody()
+	    public List<String> deleteQuestion (@RequestBody QuestionsBank qb) {
+	    	//Log4j
+	    	LogThis.LogIt("info","Question deleted");
+			return this.qbs.deleteQuestion(qb.getQuestionId());
+	 	}
 
 		@RequestMapping(value = "/addall", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

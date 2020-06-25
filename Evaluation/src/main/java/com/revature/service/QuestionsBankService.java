@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +44,13 @@ public class QuestionsBankService {
 	public QuestionsBank InsertQuestion(QuestionsBank qb) {
 		qb.setQuiz(qr.findById(qb.getQuizId()).get()); 
 			return qbr.save(qb);
+	}
+	
+	public List<String> deleteQuestion(long questionId) {
+		List<String> tmp = new ArrayList<String>();
+		this.qbr.deleteById(questionId);
+		tmp.add("deleted question with id " + questionId);
+		return tmp;
 	}
 	
 
