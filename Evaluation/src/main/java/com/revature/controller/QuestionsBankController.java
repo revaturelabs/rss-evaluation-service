@@ -134,4 +134,13 @@ public class QuestionsBankController {
 			return qList;
 			
 		}
+		
+		@RequestMapping(value = "/getquestionsadmin", method = RequestMethod.POST,
+	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	    @ResponseBody()
+	    public List<QuestionsBank> getQuestionsByQuizIdAdmin (@RequestBody QuestionsBank qb) {
+	    
+			return this.qbs.findQuestionsByQuiz(qb);
+			
+		}
 }
