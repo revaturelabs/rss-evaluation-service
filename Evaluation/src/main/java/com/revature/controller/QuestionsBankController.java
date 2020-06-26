@@ -24,7 +24,6 @@ import com.revature.util.LogThis;
 
 @RestController
 @RequestMapping(value="/question")
-
 public class QuestionsBankController {
 	
 	@Autowired

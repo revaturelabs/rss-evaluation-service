@@ -1,3 +1,4 @@
+//This is a UserQuizScore entity which going to make USER_QUIZ_SCORE table in database and create Many-to-One relationship with QUIZZES table.
 package com.revature.entity;
 
 import java.util.Date;
@@ -29,9 +30,11 @@ public class UserQuizScore {
 	@Column(name="SUBMIT_DATE", nullable=false, columnDefinition="TimeStamp")
 	private Date submitDate;
 	
-	//we will create one transient field for userId
+	//We create one transient field for quizId.
+	//It will take input from front-end and do the rest of the process which help to maintain relationship with QUIZZES table.
 	private transient Long quizId;
 	
+	//We create unidirectional Many-To-One relationship from USER_QUIZ_SCORE table to QUIZZES table where quiz_id is a foreign key in USER_QUIZ_SCORE table
 	@ManyToOne
     @JoinColumn(name = "QUIZ_ID")
     private Quiz quiz;

@@ -1,3 +1,5 @@
+//This is a question bean which is a dummy bean used to send only questions and their options without correct answers to the front-end for security purposes. 
+//So that no one hack the JSON object and get the correct answers.
 package com.revature.beans;
 
 public class Question {

@@ -1,3 +1,4 @@
+//This is a subject entity which going to make SUBJECTS table in database.
 package com.revature.entity;
 
 import javax.persistence.Column;
