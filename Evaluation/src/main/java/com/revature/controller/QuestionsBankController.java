@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.entity.Question;
+import com.revature.beans.Question;
+import com.revature.beans.Result;
 import com.revature.entity.QuestionsBank;
-import com.revature.entity.Result;
 import com.revature.entity.UserQuizScore;
 import com.revature.service.QuestionsBankService;
 import com.revature.service.UserQuizScoreService;
