@@ -1,9 +1,8 @@
+//This is a result bean which is a dummy bean used only to send required result of quiz to the front-end and it is not persisted in table.
 package com.revature.beans;
 
 public class Result {
 
-	private int resultId;
-	
 	private int totalQuestions;
 	
 	private  int correctAnswers;
@@ -12,14 +11,6 @@ public class Result {
 
 	public Result() {
 		super();
-	}
-
-	public int getResultId() {
-		return resultId;
-	}
-
-	public void setResultId(int resultId) {
-		this.resultId = resultId;
 	}
 
 	public int getTotalQuestions() {
@@ -48,7 +39,7 @@ public class Result {
 
 	@Override
 	public String toString() {
-		return "Result [resultId=" + resultId + ", totalQuestions=" + totalQuestions + ", correctAnswers="
+		return "Result [totalQuestions=" + totalQuestions + ", correctAnswers="
 				+ correctAnswers + ", totalPoints=" + totalPoints + "]";
 	}
 	

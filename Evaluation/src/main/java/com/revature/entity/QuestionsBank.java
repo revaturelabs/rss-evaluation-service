@@ -1,3 +1,4 @@
+//This is a questionBank entity which going to make QUESTIONS_BANK table in database and create Many-to-One relationship with QUIZZES table.
 package com.revature.entity;
 
 import javax.persistence.Column;
@@ -42,9 +43,11 @@ public class QuestionsBank {
 	@Column(name="CORRECT_ANSWER", nullable=false)
 	private String correctAnswer;
 	
-	//we will create one transient field for userId
+	//We create one transient field for quizId.
+	//It will take input from front-end and do the rest of the process which help to maintain relationship with QUIZZES table.
 	private transient Long quizId;
 		
+	//We create unidirectional Many-To-One relationship from QUESTIONS_BANK table to QUIZZES table where quiz_id is a foreign key in QUESTIONS_BANK table
 	@ManyToOne
     @JoinColumn(name = "QUIZ_ID")
     private Quiz quiz;
@@ -52,7 +55,6 @@ public class QuestionsBank {
 
 	public QuestionsBank() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public long getQuestionId() {

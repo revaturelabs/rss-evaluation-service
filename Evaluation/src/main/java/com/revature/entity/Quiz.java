@@ -1,6 +1,5 @@
+//This is a quiz entity which going to make QUIZZES table in database and create Many-to-One relationship with SUBJECTS table.
 package com.revature.entity;
-
-//import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,30 +29,18 @@ public class Quiz {
 	@Column(name="CREATOR_EMAIL", nullable=false)
 	private String creatorEmail;
 	
-	//we will create one transient field for userId
+	//We create one transient field for subjectId.
+	//It will take input from front-end and do the rest of the process which help to maintain relationship with SUBJECTS table. 
 	private transient Long subjectId;
-		
+	
+	//We create unidirectional Many-To-One relationship from QUIZZES table to SUBJECTS table where subject_id is a foreign key in QUIZZES table
 	@ManyToOne
     @JoinColumn(name = "SUBJECT_ID")
     private Subject subject;
 	
-//	@OneToMany(mappedBy = "quiz")
-//	private List<UserQuizScore> uqsList;
-//	
-//	@OneToMany(mappedBy = "quizQuestion")
-//	private List<QuestionsBank> qbList;
-
-//	public List<UserQuizScore> getUqsList() {
-//		return uqsList;
-//	}
-//
-//	public void setUqsList(List<UserQuizScore> uqsList) {
-//		this.uqsList = uqsList;
-//	}
 
 	public Quiz() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	
@@ -115,14 +102,6 @@ public class Quiz {
 	public void setSubject(Subject subject) {
 		this.subject = subject;
 	}
-
-//	public List<QuestionsBank> getQbList() {
-//		return qbList;
-//	}
-//
-//	public void setQbList(List<QuestionsBank> qbList) {
-//		this.qbList = qbList;
-//	}
 
 	@Override
 	public String toString() {
