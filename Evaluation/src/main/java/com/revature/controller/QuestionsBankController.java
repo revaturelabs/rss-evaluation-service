@@ -85,11 +85,13 @@ public class QuestionsBankController {
 	    		
 	    		qb = new QuestionsBank();
 	    		qb=(qbs.getQuestion(qList.get(i).getQuestionId()));
+	    		System.out.println(qb);
 	    		userEmail = qList.get(i).getUserEmail();
 	    		quizId = qb.getQuiz().getQuizId();
 	    		
 	    		if(qList.get(i).getSelectedAnswer().equalsIgnoreCase(qb.getCorrectAnswer())){
-	    			totalPoints += qList.get(i).getQuestionValue();
+	    			totalPoints += qb.getQuestionValue();
+	    			System.out.println(qList.get(i).getQuestionValue());
 	    			correctAnswers++;
 	    		}
 	    	}
