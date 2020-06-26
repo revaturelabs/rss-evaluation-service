@@ -1,5 +1,5 @@
+//This is a RestService configuration which allows communication between front-end and evaluation service.
 package com.revature.restServiceCors;
-
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -15,36 +15,41 @@ public class QuizService {
 	QuizRepository qr;
 	SubjectRepository sr;
 	
+	//We use constructor auto-wiring to auto-wired multiple repositories.
 	@Autowired
 	public QuizService(QuizRepository qRepository, SubjectRepository sRepository) {
 		this.qr = qRepository;
 		this.sr = sRepository;
 	}
-
-	public List<Quiz> quizList() {
-		return qr.findAll();
-	}
 	
+	
+	//Method to find quiz by Subject
 	public List<Quiz> findQuizBySubject(long sId) {
 		return qr.findQuizBySubject(sr.findById(sId).get());
 	}
 	
-	public Quiz findById(Long id) {
-		Quiz q = qr.findById(id).get();
+	//Method to find quiz by quiz ID.
+	public Quiz findById(Long quizid) {
+		Quiz q = qr.findById(quizid).get();
 		q.setSubjectId(q.getSubject().getSubjectId());
 		return q;
 	}
-
+	
+	//Methods to insert quiz.
+	//we get only subectId from front-end and then we find subject using that subjectId. 
+	//Then we set that subject in the quiz object to insert that record into database.
 	public Quiz insertQuiz(Quiz q) { 
 		q.setSubject(sr.findById(q.getSubjectId()).get()); 
 		return qr.save(q);
 	}
-
+	
+	//Method to delete quiz by quiz ID.
 	public String deleteQuizById(Long id) {
 		qr.deleteById(id);
 		return "{'message':'Quiz deleted successfully'}";
 	}
 	
+	//Method to find all quiz.
 	public List<Quiz> getAllQuizzes(){
 		return this.qr.findAll();
 	}
