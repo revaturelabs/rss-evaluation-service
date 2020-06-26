@@ -21,7 +21,8 @@ public class QuizController {
 	@Autowired
 	QuizService qs;
 	
-	@RequestMapping(value = "/addquiz", method = RequestMethod.POST,
+	//Change endpoint from /addquiz to /admin/add
+	@RequestMapping(value = "admin/add", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody()
 	public Quiz insertQuiz (@RequestBody Quiz q) {
@@ -31,7 +32,8 @@ public class QuizController {
 		return this.qs.insertQuiz(q);
 	}
 	
-	@RequestMapping(value = "/findbyid", method = RequestMethod.POST,
+	//Change endpoint from /findbyid to /obtain/id
+	@RequestMapping(value = "/obtain/id", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody()
 	public Quiz findQuizById (@RequestBody Quiz q) {
@@ -41,7 +43,8 @@ public class QuizController {
 		return q1;
 	}
 	
-	@RequestMapping(value = "/findbysubject", method = RequestMethod.POST,
+	//Change endpoint from /findbysubject to /obtain/subject
+	@RequestMapping(value = "/obtain/subject", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody()
 	public List<Quiz> findQuizBySubjectId (@RequestBody Quiz q) {
@@ -54,7 +57,8 @@ public class QuizController {
 		return q1;
 	}
 	
-	@RequestMapping(value = "/getallquizzes", method = RequestMethod.GET)
+	//Change endpoint from /getallquizzes to /obtain/all
+	@RequestMapping(value = "/obtain/all", method = RequestMethod.GET)
 	@ResponseBody()
 	public List<Quiz> getAllQuizzes(){
 		return this.qs.getAllQuizzes();

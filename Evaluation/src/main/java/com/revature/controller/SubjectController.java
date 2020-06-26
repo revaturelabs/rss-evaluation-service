@@ -22,12 +22,14 @@ public class SubjectController {
 	@Autowired
     SubjectService ss;
 	
-	@GetMapping("/all")
+	//Change endpoint from /all to /obtain/all
+	@GetMapping("/obtain/all")
     public List<Subject> getAllSubjects() {
         return ss.subjectList();
     }
 	
-	@RequestMapping(value = "/add", method = RequestMethod.POST,
+	//Change endpoint from /add to /admin/add
+	@RequestMapping(value = "/admin/add", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody()
 	public String insertSubject (@RequestBody Subject s) {

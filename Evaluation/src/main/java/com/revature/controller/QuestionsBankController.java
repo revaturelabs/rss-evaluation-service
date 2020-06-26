@@ -26,13 +26,18 @@ import com.revature.util.LogThis;
 @RequestMapping(value="/question")
 public class QuestionsBankController {
 	
-	@Autowired
 	QuestionsBankService qbs;
-	
-	@Autowired
 	UserQuizScoreService uqss;
+	
+	//We use constructor auto-wiring to auto-wired multiple services.
+	@Autowired
+	public QuestionsBankController(QuestionsBankService qbService, UserQuizScoreService uqsService) {
+		this.qbs=qbService;
+		this.uqss=uqsService;
+	}
 
-	 @RequestMapping(value = "/add", method = RequestMethod.POST,
+	//Change endpoint from /add to /admin/add
+	 @RequestMapping(value = "/admin/add", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 
 	    @ResponseBody()
@@ -42,7 +47,8 @@ public class QuestionsBankController {
 			return this.qbs.InsertQuestion(qb);
 	 	}
 	 
-	 @RequestMapping(value = "/delete", method = RequestMethod.POST,
+	 //Change endpoint from /delete to /admin/delete
+	 @RequestMapping(value = "/admin/delete", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 
 	    @ResponseBody()
@@ -51,8 +57,9 @@ public class QuestionsBankController {
 	    	LogThis.LogIt("info","Question deleted");
 			return this.qbs.deleteQuestion(qb.getQuestionId());
 	 	}
-
-		@RequestMapping(value = "/addall", method = RequestMethod.POST,
+	 
+	 	//Change endpoint from /addall to /admin/addall
+		@RequestMapping(value = "/admin/addall", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
 	    public List<QuestionsBank> insertAllQuestions (@RequestBody List<QuestionsBank> qbList) {
@@ -66,7 +73,8 @@ public class QuestionsBankController {
 			
 		}
 		
-		@RequestMapping(value = "/submitquiz", method = RequestMethod.POST,
+		//change endpoint from /submitQuiz to /forward
+		@RequestMapping(value = "/forward", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
 	    public Result calculatePoints (@RequestBody List<Question> qList) {
@@ -109,7 +117,8 @@ public class QuestionsBankController {
 	    	return result;
 		}
 	    
-		@RequestMapping(value = "/getquestions", method = RequestMethod.POST,
+		//change endpoint from /getquestions to /questions
+		@RequestMapping(value = "/questions", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
 	    public List<Question> getQuestionsByQuizId (@RequestBody QuestionsBank qb) {
@@ -136,7 +145,8 @@ public class QuestionsBankController {
 			
 		}
 		
-		@RequestMapping(value = "/getquestionsadmin", method = RequestMethod.POST,
+		//change endpoint from /getquestionsadmin to /admin/questions
+		@RequestMapping(value = "/admin/questions", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
 	    public List<QuestionsBank> getQuestionsByQuizIdAdmin (@RequestBody QuestionsBank qb) {
