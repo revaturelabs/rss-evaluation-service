@@ -21,7 +21,8 @@ public class UserQuizScoreController {
 	@Autowired
 	UserQuizScoreService uqss;
 	
-	@RequestMapping(value = "/takenquiz", method = RequestMethod.POST,
+	//Change endpoint from /takenquiz to /obtain/taken
+	@RequestMapping(value = "/obtain/taken", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody()
     public List<Long> getTakenQuiz (@RequestBody UserQuizScore uqs) {
