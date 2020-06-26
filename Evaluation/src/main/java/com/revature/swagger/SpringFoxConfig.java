@@ -1,3 +1,4 @@
+//This is a Swagger configuration for Swagger Documentation/Tests
 package com.revature.swagger;
 
 import org.springframework.context.annotation.Bean;

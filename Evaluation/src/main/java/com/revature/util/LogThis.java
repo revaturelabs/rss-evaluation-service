@@ -1,3 +1,4 @@
+//This is Log4J class.
 package com.revature.util;
 
 import org.apache.logging.log4j.LogManager;

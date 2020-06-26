@@ -34,14 +34,6 @@ public class EvalAppTestMockitoQS {
 	/** Test Methods in QuizService **/
 	
 	@Test
-	public void quizListTest() {
-		when(quizService.quizList()).thenReturn(Stream
-				.of(quiz).collect(Collectors.toList()));
-		
-		assertEquals(1, quizService.quizList().size());
-	}
-	
-	@Test
 	public void findQuizBySubjectTest() {	
 		when(quizService.findQuizBySubject(2)).thenReturn(Stream
 				.of(new Quiz()).collect(Collectors.toList()));

@@ -10,25 +10,30 @@ import com.revature.repo.SubjectRepository;
 @Service
 public class SubjectService {
 	
+	//Auto-wiring subject repository.
 	@Autowired
 	SubjectRepository sr;
 	
+	//Method to find all subjects
 	public List<Subject> subjectList() {
 		return sr.findAll();
 	}
-
-	public Subject findById(Long id) {	
-		return sr.findById(id).get();
+	
+	//MEthod to fins subject by subject ID.
+	public Subject findById(Long subjectId) {	
+		return sr.findById(subjectId).get();
 		
 	}
-
+	
+	//Method to insert Subject into database.
 	public String insertSubject(Subject s) {
 		sr.save(s);
 		return "{'message':'Subject added successfully.'}";
 	}
-
-	public String deleteSubjectById(Long id) {
-		sr.deleteById(id);
+	
+	//Method to delete subject by subject ID.
+	public String deleteSubjectById(Long subjectId) {
+		sr.deleteById(subjectId);
 		return "{'message':'Subject deleted successfully.'}";
 	}
 
