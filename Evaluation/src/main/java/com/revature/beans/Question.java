@@ -23,6 +23,8 @@ public class Question {
 	private String selectedAnswer;
 	
 	private String userEmail;
+	
+	private int acctId;
 
 	public Question() {
 		super();
@@ -106,6 +108,14 @@ public class Question {
 
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
+	}
+	
+	public int getAcctId() {
+		return acctId;
+	}
+
+	public void setAcctId(int acctId) {
+		this.acctId = acctId;
 	}
 
 	@Override

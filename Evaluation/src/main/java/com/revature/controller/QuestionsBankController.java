@@ -6,12 +6,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import com.revature.beans.Account;
 import com.revature.beans.Question;
 import com.revature.beans.Result;
 import com.revature.entity.QuestionsBank;
@@ -39,7 +43,6 @@ public class QuestionsBankController {
 	//Change endpoint from /add to /admin/add
 	 @RequestMapping(value = "/admin/add", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-
 	    @ResponseBody()
 	    public QuestionsBank insertQuestion (@RequestBody QuestionsBank qb) {
 	    	//Log4j
@@ -82,6 +85,8 @@ public class QuestionsBankController {
 	    	UserQuizScore uqs = new UserQuizScore();
 	    	Result result = new Result();
 	    	String userEmail = null;
+	    	
+	    	int accId = 0;
 	    	long quizId = 0;
 	    	int correctAnswers = 0;
 	    	int totalPoints = 0;
@@ -94,6 +99,7 @@ public class QuestionsBankController {
 	    		qb=(qbs.getQuestion(qList.get(i).getQuestionId()));
 	    		System.out.println(qb);
 	    		userEmail = qList.get(i).getUserEmail();
+	    		accId = qList.get(i).getAcctId();
 	    		quizId = qb.getQuiz().getQuizId();
 	    		
 	    		if(qList.get(i).getSelectedAnswer().equalsIgnoreCase(qb.getCorrectAnswer())){
@@ -102,7 +108,9 @@ public class QuestionsBankController {
 	    			correctAnswers++;
 	    		}
 	    	}
-	    	
+	    	qb.setQuizId(quizId);
+	    	totalQuestions=qbs.findQuestionsByQuiz(qb).size();
+	    	System.out.println(totalQuestions);
 	    	uqs.setSubmitDate(date);
 	    	uqs.setUserEmail(userEmail);
 	    	uqs.setQuizId(quizId);
@@ -113,6 +121,12 @@ public class QuestionsBankController {
 	    	result.setTotalQuestions(totalQuestions);
 	    	result.setCorrectAnswers(correctAnswers);
 	    	result.setTotalPoints(totalPoints);
+	    	
+	    	Account acc = new Account();
+	    	
+	    	acc.setAccId(accId);
+	    	acc.setPoints(totalPoints);
+	    	
 	    	
 	    	return result;
 		}
