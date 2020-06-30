@@ -17,7 +17,7 @@ import com.revature.util.LogThis;
 @RestController
 @RequestMapping(value="/quiz")
 public class QuizController {
-	
+	//
 	@Autowired
 	QuizService qs;
 	
