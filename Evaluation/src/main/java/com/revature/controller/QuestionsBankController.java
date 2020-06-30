@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.revature.beans.Account;
+//import com.revature.beans.Account;
 import com.revature.beans.Question;
 import com.revature.beans.Result;
 import com.revature.entity.QuestionsBank;
@@ -108,8 +108,8 @@ public class QuestionsBankController {
 	    			correctAnswers++;
 	    		}
 	    	}
-	    	qb.setQuizId(quizId);
-	    	totalQuestions=qbs.findQuestionsByQuiz(qb).size();
+//	    	qb.setQuizId(quizId);
+//	    	totalQuestions=qbs.findQuestionsByQuiz(qb).size();
 	    	System.out.println(totalQuestions);
 	    	uqs.setSubmitDate(date);
 	    	uqs.setUserEmail(userEmail);
@@ -121,11 +121,7 @@ public class QuestionsBankController {
 	    	result.setTotalQuestions(totalQuestions);
 	    	result.setCorrectAnswers(correctAnswers);
 	    	result.setTotalPoints(totalPoints);
-	    	
-	    	Account acc = new Account();
-	    	
-	    	acc.setAccId(accId);
-	    	acc.setPoints(totalPoints);
+	 
 	    	
 	    	
 	    	return result;
