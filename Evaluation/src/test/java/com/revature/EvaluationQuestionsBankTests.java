@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.revature.controller.QuestionsBankController;
 import com.revature.entity.QuestionsBank;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 class EvaluationQuestionsBankTests {
 	
 	@Autowired
