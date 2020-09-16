@@ -18,7 +18,7 @@ public class QuizController {
 	QuizService qs;
 	
 	//Change endpoint from /addquiz to /admin/add
-	@RequestMapping(value = "admin/add", method = RequestMethod.POST,
+	@RequestMapping(value = "/admin/add", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody()
 	public Quiz insertQuiz (@RequestBody Quiz q) {
