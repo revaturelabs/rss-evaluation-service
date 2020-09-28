@@ -13,7 +13,9 @@ import com.revature.controller.SubjectController;
 import com.revature.entity.QuestionsBank;
 import com.revature.entity.Quiz;
 import com.revature.entity.Subject;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 class EvaluationAppTestsJUnit {
 	
 	@Autowired
