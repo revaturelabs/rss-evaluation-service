@@ -25,6 +25,9 @@ public class Quiz {
 	
 	@Column(name="QUIZ_DESCRIPTION", nullable=true)
 	private String quizDescription;
+	// Group 2 change
+	@Column(name="QUIZ_TOTAL_POINTS", nullable=true)
+	private int quizTotalPoints;
 	
 	@Column(name="CREATOR_EMAIL", nullable=false)
 	private String creatorEmail;
@@ -43,13 +46,14 @@ public class Quiz {
 		super();
 	}
 	
-	
-	public Quiz(long quizId, String quizTopic, String quizDescription, String creatorEmail, Long subjectId,
+	// Group 2 change 
+	public Quiz(long quizId, String quizTopic, String quizDescription, int quizTotalPoints, String creatorEmail, Long subjectId,
 			Subject subject) {
 		super();
 		this.quizId = quizId;
 		this.quizTopic = quizTopic;
 		this.quizDescription = quizDescription;
+		this.quizTotalPoints = quizTotalPoints;
 		this.creatorEmail = creatorEmail;
 		this.subjectId = subjectId;
 		this.subject = subject;
@@ -102,6 +106,17 @@ public class Quiz {
 	public void setSubject(Subject subject) {
 		this.subject = subject;
 	}
+
+	// Group 2 change 
+	public int getQuizTotalPoints() {
+		return quizTotalPoints;
+	}
+
+	// Group 2 change 
+	public void setQuizTotalPoints(int quizTotalPoints) {
+		this.quizTotalPoints = quizTotalPoints;
+	}
+
 
 	@Override
 	public String toString() {
