@@ -28,6 +28,11 @@ public class AnswersBank {
 	@JoinColumn(name = "USER_SCORE_ID")
 	private UserQuizScore userScoreId;
 	
+	//We create unidirectional Many-To-One relationship from QUESTIONS_BANK table to QUIZZES table where quiz_id is a foreign key in QUESTIONS_BANK table
+	@ManyToOne
+	@JoinColumn(name = "QUIZ_ID")
+	private Quiz quiz;
+	
 
 	public AnswersBank() {
 		super();
@@ -73,11 +78,21 @@ public class AnswersBank {
 		this.userScoreId = userScoreId;
 	}
 
+	
+	public Quiz getQuiz() {
+		return quiz;
+	}
+
+
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
+	}
+
 
 	@Override
 	public String toString() {
 		return "AnswersBank [answerId=" + answerId + ", userAnswer=" + userAnswer + ", questionId=" + questionId
-				+ ", userScoreId=" + userScoreId + "]";
+				+ ", userScoreId=" + userScoreId + ", quiz=" + quiz + "]";
 	}
 
 }
