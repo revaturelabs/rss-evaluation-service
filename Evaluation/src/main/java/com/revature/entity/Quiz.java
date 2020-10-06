@@ -32,6 +32,9 @@ public class Quiz {
 	@Column(name="QUIZ_DIFFICULTY", nullable=true)
 	private String quizDifficulty;
 	
+	@Column(name = "QUIZ_ATTEMPT", nullable=false)
+	private int quizAttempt;
+	
 	@Column(name="CREATOR_EMAIL", nullable=false)
 	private String creatorEmail;
 	
@@ -50,21 +53,34 @@ public class Quiz {
 	}
 	
 	// Group 2 change 
+	
+
+	public long getQuizId() {
+		return quizId;
+	}
+
 	public Quiz(long quizId, String quizTopic, String quizDescription, int quizTotalPoints, String quizDifficulty,
-			String creatorEmail, Long subjectId, Subject subject) {
+			int quizAttempt, String creatorEmail, Long subjectId, Subject subject) {
 		super();
 		this.quizId = quizId;
 		this.quizTopic = quizTopic;
 		this.quizDescription = quizDescription;
 		this.quizTotalPoints = quizTotalPoints;
 		this.quizDifficulty = quizDifficulty;
+		this.quizAttempt = quizAttempt;
 		this.creatorEmail = creatorEmail;
 		this.subjectId = subjectId;
 		this.subject = subject;
 	}
+ 
 
-	public long getQuizId() {
-		return quizId;
+
+	public int getQuizAttempt() {
+		return quizAttempt;
+	}
+
+	public void setQuizAttempt(int quizAttempt) {
+		this.quizAttempt = quizAttempt;
 	}
 
 	public void setQuizId(long quizId) {
@@ -130,13 +146,13 @@ public class Quiz {
 	public void setQuizDifficulty(String quizDifficulty) {
 		this.quizDifficulty = quizDifficulty;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Quiz [quizId=" + quizId + ", quizTopic=" + quizTopic + ", quizDescription=" + quizDescription
-				+ ", creatorEmail=" + creatorEmail + ", subject=" + subjectId  + "]";
+				+ ", quizTotalPoints=" + quizTotalPoints + ", quizDifficulty=" + quizDifficulty + ", quizAttempt=" + quizAttempt
+				+ ", creatorEmail=" + creatorEmail + ", subject=" + subject + "]";
 	}
-	
-	
+		
 	
 }
