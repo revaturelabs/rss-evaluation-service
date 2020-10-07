@@ -17,7 +17,7 @@ public class AnswersBank {
 	@Column(name = "ANSWER_ID")
 	private long answerId;
 	
-	@Column(name = "USER_ANSWER")
+	@Column(name = "USER_ANSWER", nullable=false)
 	private String userAnswer;
 	
 	@ManyToOne
