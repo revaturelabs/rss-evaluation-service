@@ -3,6 +3,7 @@ package com.revature.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.catalina.authenticator.SavedRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class AnswersBankService {
 		this.qs = qService;
 	}
 	
-	//Method to find all questions.
+	
 	//list of answer banks (every question id will have an answer id)
 		public List<AnswersBank> findUsersAnswersByQuiz(AnswersBank ab){
 			
@@ -52,7 +53,7 @@ public class AnswersBankService {
 			return userAnswers;
 		}
 		
-		//Methods to find questions by quiz.
+		
 		//we get only quizId from front-end and then we find object of quiz using that quizId. So that we use it to find the questions by quiz.
 		public List<String> findCorrectAnswersByQuiz(AnswersBank ab){
 			
@@ -68,4 +69,15 @@ public class AnswersBankService {
 			return correctAnswers;		
 		}
 		
+		
+		//Method to add an answersbank
+		public AnswersBank addAnswersBank(AnswersBank ab) {
+			//ab.setQuiz(qr.findById(ab.getQuiz().getQuizId())); 
+			return abr.save(ab);
+		}
+		
+		//Method to update the answersbank
+		
+		
+		//Method list of answersbanks???
 }

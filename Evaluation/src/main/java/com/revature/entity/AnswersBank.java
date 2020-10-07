@@ -1,5 +1,7 @@
 package com.revature.entity;
 
+import java.util.Optional;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -94,5 +96,7 @@ public class AnswersBank {
 		return "AnswersBank [answerId=" + answerId + ", userAnswer=" + userAnswer + ", questionId=" + questionId
 				+ ", userScoreId=" + userScoreId + ", quiz=" + quiz + "]";
 	}
+
+
 
 }
