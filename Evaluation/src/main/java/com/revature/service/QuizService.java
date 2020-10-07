@@ -54,5 +54,10 @@ public class QuizService {
 		return this.qr.findAll();
 	}
 	
+	//GROUP 2 creating update method
+	public Quiz updateQuizAttempt(Quiz quiz) {
+		return qr.save(quiz);
+	}
+	
 }
 

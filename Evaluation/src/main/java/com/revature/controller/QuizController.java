@@ -59,4 +59,16 @@ public class QuizController {
 	public List<Quiz> getAllQuizzes(){
 		return this.qs.getAllQuizzes();
 	}
+	
+	//GROUP 2 adding update function for the quiz
+	@RequestMapping(value="/quizzes", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody()
+	public Quiz updateQuizAttempt (@RequestBody Quiz quiz) {
+		Quiz q1 = qs.findById(quiz.getQuizId());
+		q1.setQuizAttempt(quiz.getQuizAttempt());
+		qs.updateQuizAttempt(quiz);
+		
+		return q1;
+	}
+	
 }
