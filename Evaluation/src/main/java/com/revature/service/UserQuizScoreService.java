@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.entity.Quiz;
 import com.revature.entity.UserQuizScore;
 import com.revature.repo.QuizRepository;
 import com.revature.repo.UserQuizScoreRepository;
@@ -40,5 +41,15 @@ public class UserQuizScoreService {
 		    quizList.add(uqsList.get(i).getQuiz().getQuizId());
 		}
 		return quizList;
+	}
+	
+	//GROUP 2 creating update method
+	public Quiz updateQuizAttempt(Quiz quiz) {
+		return qr.save(quiz);
+	}
+	
+	//GROUP 2 FIND BY SCORE ID
+	public UserQuizScore findByUserScoreId(Long userScoreId) {
+		return uqsr.findByUserScoreId(userScoreId);
 	}
 }

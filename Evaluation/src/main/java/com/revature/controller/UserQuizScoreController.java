@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import com.revature.entity.Quiz;
 import com.revature.entity.UserQuizScore;
 import com.revature.service.UserQuizScoreService;
 
@@ -28,5 +29,14 @@ public class UserQuizScoreController {
 		
 	}
 	
+	//GROUP 2 UPDATE QUIZ
+	@RequestMapping(value="/quizzes", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody()
+	public UserQuizScore updateQuizAttempt (@RequestBody Quiz quiz) {
+		UserQuizScore q1 = uqss.findByUserScoreId(quiz.getQuizId());	
+		q1.setQuizAttempt(quiz.getQuizAttempt());
+		uqss.updateQuizAttempt(quiz);
+		return q1;
+	}
 	
 }

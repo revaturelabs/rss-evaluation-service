@@ -3,13 +3,16 @@ package com.revature.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +33,15 @@ public class UserQuizScore {
 	@Column(name="SUBMIT_DATE", nullable=false, columnDefinition="TimeStamp")
 	private Date submitDate;
 	
+	//GROUP 2 CHANGE
+	//added here to link quiz attempt to score id
+	//added target entity to get rid of a hibernate exception
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL, targetEntity=Quiz.class)
+	@JoinColumn(name="QUIZ_ATTEMPT", referencedColumnName="QUIZ_ATTEMPT",nullable=false, updatable=true, insertable=false)
+	private int quizAttempt;
+	
+
+	
 	//We create one transient field for quizId.
 	//It will take input from front-end and do the rest of the process which help to maintain relationship with QUIZZES table.
 	private transient Long quizId;
@@ -38,6 +50,41 @@ public class UserQuizScore {
 	@ManyToOne
     @JoinColumn(name = "QUIZ_ID")
     private Quiz quiz;
+	
+	
+
+	public UserQuizScore() {
+		super();
+		
+	}
+	
+	
+
+	public UserQuizScore(String userEmail, int userScore, Date submitDate, int quizAttempt, Long quizId, Quiz quiz) {
+		super();
+		this.userEmail = userEmail;
+		this.userScore = userScore;
+		this.submitDate = submitDate;
+		this.quizAttempt = quizAttempt;
+		this.quizId = quizId;
+		this.quiz = quiz;
+	}
+
+
+
+	public UserQuizScore(long userScoreId, String userEmail, int userScore, Date submitDate, int quizAttempt,
+			Long quizId, Quiz quiz) {
+		super();
+		this.userScoreId = userScoreId;
+		this.userEmail = userEmail;
+		this.userScore = userScore;
+		this.submitDate = submitDate;
+		this.quizAttempt = quizAttempt;
+		this.quizId = quizId;
+		this.quiz = quiz;
+	}
+
+
 
 	public long getUserScoreId() {
 		return userScoreId;
@@ -86,12 +133,37 @@ public class UserQuizScore {
 	public void setQuizId(Long quizId) {
 		this.quizId = quizId;
 	}
+	
+	
+	public int getQuizAttempt() {
+		return quizAttempt;
+	}
+
+	public void setQuizAttempt(int quizAttempt) {
+		this.quizAttempt = quizAttempt;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "UserQuizScore [userScoreId=" + userScoreId + ", userEmail=" + userEmail + ", userScore=" + userScore
-				+ ", submitDate=" + submitDate + ", quiz=" + quizId + "]";
+				+ ", submitDate=" + submitDate + ", quizAttempt=" + quizAttempt + ", quizId=" + quizId + "]";
 	}
+
+
+
+//	@Override
+//	public String toString() {
+//		return "UserQuizScore [userScoreId=" + userScoreId + ", userEmail=" + userEmail + ", userScore=" + userScore
+//				+ ", submitDate=" + submitDate + ", quizAttempt=" + quizAttempt + ", quiz=" + quiz.getQuizId() + "]";
+//	}
+
+
 	
+
+
+
+
 	
 }

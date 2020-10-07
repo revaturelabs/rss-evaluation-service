@@ -12,6 +12,8 @@ public interface QuizRepository extends JpaRepository<Quiz, Long>, CrudRepositor
 	
 	public List<Quiz> findQuizBySubject(Subject subject);
 	
+
+	
 	
 	// public List<Quiz> findQuizBySubjectId(long id);
 		
