@@ -77,7 +77,13 @@ public class AnswersBankService {
 		}
 		
 		//Method to update the answersbank
+		public AnswersBank updateAnswersBank(AnswersBank ab) {
+			return abr.save(ab);
+		}
 		
 		
-		//Method list of answersbanks???
+		//Method list of answersbanks, MIGHT NOT NEED
+		public List<AnswersBank> findAll(){
+			return abr.findAll();
+		}
 }

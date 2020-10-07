@@ -7,4 +7,5 @@ import com.revature.entity.AnswersBank;
 
 public interface AnswersBankRepository extends JpaRepository<AnswersBank,Long>, CrudRepository<AnswersBank,Long>{
 
+
 }
