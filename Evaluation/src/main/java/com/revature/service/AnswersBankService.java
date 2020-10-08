@@ -3,13 +3,13 @@ package com.revature.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.catalina.authenticator.SavedRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.entity.AnswersBank;
 import com.revature.entity.QuestionsBank;
 import com.revature.entity.Quiz;
+import com.revature.entity.UserQuizScore;
 import com.revature.repo.AnswersBankRepository;
 import com.revature.repo.QuestionsBankRepository;
 import com.revature.repo.QuizRepository;
@@ -38,26 +38,18 @@ public class AnswersBankService {
 	}
 	
 	
-	//list of answer banks (every question id will have an answer id)
-		public List<AnswersBank> findUsersAnswersByQuiz(AnswersBank ab){
+		//list of answers based on a specific quiz attempt - Oct 7 2020
+		public List<AnswersBank> findUsersAnswersByAttempt(UserQuizScore attempt){
 			
-			List<AnswersBank> answers = abr.findAll();
-			List<AnswersBank> userAnswers = new ArrayList<>();
-			for(AnswersBank aB : answers) {
-				if(aB.getQuiz().equals(ab.getQuiz())) {
-					
-					userAnswers.add(aB);
-				}
-			}
-			
-			return userAnswers;
+			List<AnswersBank> answers = abr.findAnswersByUserScore(attempt);
+			return answers;
 		}
 		
 		
-		//we get only quizId from front-end and then we find object of quiz using that quizId. So that we use it to find the questions by quiz.
-		public List<String> findCorrectAnswersByQuiz(AnswersBank ab){
+		//Returns a List of only correct answers based on a specific Quiz - Oct 7 2020
+		public List<String> findCorrectAnswersByQuiz(Quiz q){
 			
-			List<QuestionsBank> questions = qbr.findQuestionsByQuiz(ab.getQuiz());
+			List<QuestionsBank> questions = qbr.findQuestionsByQuiz(q);
 	
 			List<String> correctAnswers = new ArrayList<>();
 			
@@ -70,17 +62,12 @@ public class AnswersBankService {
 		}
 		
 		
-		//Method to add an answersbank
+		//Method to add an answer - Oct 7 2020
 		public AnswersBank addAnswersBank(AnswersBank ab) {
-			//ab.setQuiz(qr.findById(ab.getQuiz().getQuizId())); 
+			ab.setQuestion(qbr.findById(ab.getQuestion().getQuestionId()).get());
+			ab.setUserScore(uqsr.findById(ab.getUserScore().getUserScoreId()).get());
 			return abr.save(ab);
 		}
-		
-		//Method to update the answersbank
-		public AnswersBank updateAnswersBank(AnswersBank ab) {
-			return abr.save(ab);
-		}
-		
 		
 		//Method list of answersbanks, MIGHT NOT NEED
 		public List<AnswersBank> findAll(){

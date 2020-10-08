@@ -25,8 +25,9 @@ public class UserQuizScoreController {
 		List<Long> takenQuiz = new ArrayList<>();
 		takenQuiz = uqss.getTakenQuiz(uqs.getUserEmail());
 		return takenQuiz;
-		
 	}
+	
+	//CALL THAT OTHER METHOD IN SERVICES ABOUT SPECIFIC QUIZ ATTEMPTS
 	
 	
 }

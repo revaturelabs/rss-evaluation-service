@@ -24,16 +24,16 @@ public class AnswersBank {
 	
 	@ManyToOne
 	@JoinColumn(name = "QUESTION_ID")
-	private QuestionsBank questionId;
+	private QuestionsBank question;
 	
 	@ManyToOne
 	@JoinColumn(name = "USER_SCORE_ID")
-	private UserQuizScore userScoreId;
+	private UserQuizScore userScore;
 	
 	//We create unidirectional Many-To-One relationship from QUESTIONS_BANK table to QUIZZES table where quiz_id is a foreign key in QUESTIONS_BANK table
-	@ManyToOne
-	@JoinColumn(name = "QUIZ_ID")
-	private Quiz quiz;
+//	@ManyToOne
+//	@JoinColumn(name = "QUIZ_ID")
+//	private Quiz quiz;
 	
 
 	public AnswersBank() {
@@ -61,40 +61,40 @@ public class AnswersBank {
 	}
 
 
-	public QuestionsBank getQuestionId() {
-		return questionId;
+	public QuestionsBank getQuestion() {
+		return question;
 	}
 
 
-	public void setQuestionId(QuestionsBank questionId) {
-		this.questionId = questionId;
+	public void setQuestion(QuestionsBank question) {
+		this.question = question;
 	}
 
 
-	public UserQuizScore getUserScoreId() {
-		return userScoreId;
+	public UserQuizScore getUserScore() {
+		return userScore;
 	}
 
 
-	public void setUserScoreId(UserQuizScore userScoreId) {
-		this.userScoreId = userScoreId;
+	public void setUserScore(UserQuizScore userScore) {
+		this.userScore = userScore;
 	}
 
 	
-	public Quiz getQuiz() {
-		return quiz;
-	}
-
-
-	public void setQuiz(Quiz quiz) {
-		this.quiz = quiz;
-	}
+//	public Quiz getQuiz() {
+//		return quiz;
+//	}
+//
+//
+//	public void setQuiz(Quiz quiz) {
+//		this.quiz = quiz;
+//	}
 
 
 	@Override
 	public String toString() {
-		return "AnswersBank [answerId=" + answerId + ", userAnswer=" + userAnswer + ", questionId=" + questionId
-				+ ", userScoreId=" + userScoreId + ", quiz=" + quiz + "]";
+		return "AnswersBank [answerId=" + answerId + ", userAnswer=" + userAnswer + ", question=" + question
+				+ ", userScore=" + userScore + "]";
 	}
 
 
