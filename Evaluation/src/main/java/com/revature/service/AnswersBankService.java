@@ -39,7 +39,7 @@ public class AnswersBankService {
 	
 	
 		//list of answers based on a specific quiz attempt - Oct 7 2020
-		public List<AnswersBank> findUsersAnswersByAttempt(UserQuizScore attempt){
+		public List<AnswersBank> findAnswersByAttempt(UserQuizScore attempt){
 			
 			List<AnswersBank> answers = abr.findAnswersByUserScore(attempt);
 			return answers;
