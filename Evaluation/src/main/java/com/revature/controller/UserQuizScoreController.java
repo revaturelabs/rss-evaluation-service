@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import com.revature.entity.Quiz;
+
 import com.revature.entity.UserQuizScore;
 import com.revature.service.UserQuizScoreService;
 
@@ -29,6 +29,5 @@ public class UserQuizScoreController {
 		
 	}
 	
-
 	
 }

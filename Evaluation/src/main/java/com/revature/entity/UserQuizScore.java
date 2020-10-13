@@ -32,9 +32,6 @@ public class UserQuizScore {
 	
 	@Column(name="SUBMIT_DATE", nullable=false, columnDefinition="TimeStamp")
 	private Date submitDate;
-	
-
-	
 
 	
 	//We create one transient field for quizId.
@@ -121,17 +118,4 @@ public class UserQuizScore {
 		return "UserQuizScore [userScoreId=" + userScoreId + ", userEmail=" + userEmail + ", userScore=" + userScore
 				+ ", submitDate=" + submitDate + ", quizId=" + quizId + "]";
 	}
-	
-	
-
-
-
-
-
-	
-
-
-
-
-	
 }

@@ -42,6 +42,4 @@ public class UserQuizScoreService {
 		}
 		return quizList;
 	}
-	
-
 }

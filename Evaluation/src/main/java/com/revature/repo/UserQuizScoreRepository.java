@@ -10,6 +10,4 @@ import com.revature.entity.UserQuizScore;
 public interface UserQuizScoreRepository extends JpaRepository<UserQuizScore, Long>, CrudRepository<UserQuizScore, Long> {
 	
 	public List<UserQuizScore> findQuizByUserEmail(String userEmail);
-	
-	
 }
