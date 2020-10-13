@@ -17,7 +17,6 @@ public class UserQuizScoreService {
 	UserQuizScoreRepository uqsr;
 	QuizRepository qr;
 	
-	
 	//We use constructor auto-wiring to auto-wired multiple repositories.
 	@Autowired
 	public UserQuizScoreService(UserQuizScoreRepository uqsRepository, QuizRepository qRepository) {

@@ -29,12 +29,6 @@ public class AnswersBank {
 	@ManyToOne
 	@JoinColumn(name = "USER_SCORE_ID")
 	private UserQuizScore userScore;
-	
-	//We create unidirectional Many-To-One relationship from QUESTIONS_BANK table to QUIZZES table where quiz_id is a foreign key in QUESTIONS_BANK table
-//	@ManyToOne
-//	@JoinColumn(name = "QUIZ_ID")
-//	private Quiz quiz;
-	
 
 	public AnswersBank() {
 		super();
@@ -79,16 +73,6 @@ public class AnswersBank {
 	public void setUserScore(UserQuizScore userScore) {
 		this.userScore = userScore;
 	}
-
-	
-//	public Quiz getQuiz() {
-//		return quiz;
-//	}
-//
-//
-//	public void setQuiz(Quiz quiz) {
-//		this.quiz = quiz;
-//	}
 
 
 	@Override
