@@ -33,12 +33,7 @@ public class UserQuizScore {
 	@Column(name="SUBMIT_DATE", nullable=false, columnDefinition="TimeStamp")
 	private Date submitDate;
 	
-	//GROUP 2 CHANGE
-	//added here to link quiz attempt to score id
-	//added target entity to get rid of a hibernate exception
-	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL, targetEntity=Quiz.class)
-	@JoinColumn(name="QUIZ_ATTEMPT", referencedColumnName="QUIZ_ATTEMPT",nullable=false, updatable=true, insertable=false)
-	private int quizAttempt;
+
 	
 
 	
@@ -58,28 +53,14 @@ public class UserQuizScore {
 		
 	}
 	
-	
-
-	public UserQuizScore(String userEmail, int userScore, Date submitDate, int quizAttempt, Long quizId, Quiz quiz) {
-		super();
-		this.userEmail = userEmail;
-		this.userScore = userScore;
-		this.submitDate = submitDate;
-		this.quizAttempt = quizAttempt;
-		this.quizId = quizId;
-		this.quiz = quiz;
-	}
 
 
-
-	public UserQuizScore(long userScoreId, String userEmail, int userScore, Date submitDate, int quizAttempt,
-			Long quizId, Quiz quiz) {
+	public UserQuizScore(long userScoreId, String userEmail, int userScore, Date submitDate, Long quizId, Quiz quiz) {
 		super();
 		this.userScoreId = userScoreId;
 		this.userEmail = userEmail;
 		this.userScore = userScore;
 		this.submitDate = submitDate;
-		this.quizAttempt = quizAttempt;
 		this.quizId = quizId;
 		this.quiz = quiz;
 	}
@@ -133,31 +114,18 @@ public class UserQuizScore {
 	public void setQuizId(Long quizId) {
 		this.quizId = quizId;
 	}
-	
-	
-	public int getQuizAttempt() {
-		return quizAttempt;
-	}
-
-	public void setQuizAttempt(int quizAttempt) {
-		this.quizAttempt = quizAttempt;
-	}
-
 
 
 	@Override
 	public String toString() {
 		return "UserQuizScore [userScoreId=" + userScoreId + ", userEmail=" + userEmail + ", userScore=" + userScore
-				+ ", submitDate=" + submitDate + ", quizAttempt=" + quizAttempt + ", quizId=" + quizId + "]";
+				+ ", submitDate=" + submitDate + ", quizId=" + quizId + "]";
 	}
+	
+	
 
 
 
-//	@Override
-//	public String toString() {
-//		return "UserQuizScore [userScoreId=" + userScoreId + ", userEmail=" + userEmail + ", userScore=" + userScore
-//				+ ", submitDate=" + submitDate + ", quizAttempt=" + quizAttempt + ", quiz=" + quiz.getQuizId() + "]";
-//	}
 
 
 	

@@ -43,13 +43,5 @@ public class UserQuizScoreService {
 		return quizList;
 	}
 	
-	//GROUP 2 creating update method
-	public Quiz updateQuizAttempt(Quiz quiz) {
-		return qr.save(quiz);
-	}
-	
-	//GROUP 2 FIND BY SCORE ID
-	public UserQuizScore findByUserScoreId(Long userScoreId) {
-		return uqsr.findByUserScoreId(userScoreId);
-	}
+
 }

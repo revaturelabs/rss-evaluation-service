@@ -11,6 +11,5 @@ public interface UserQuizScoreRepository extends JpaRepository<UserQuizScore, Lo
 	
 	public List<UserQuizScore> findQuizByUserEmail(String userEmail);
 	
-	//GROUP 2 CHANGE
-	public UserQuizScore findByUserScoreId(Long userScoreId);
+	
 }
