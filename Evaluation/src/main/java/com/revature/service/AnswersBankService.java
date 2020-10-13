@@ -38,7 +38,7 @@ public class AnswersBankService {
 	}
 	
 	
-		//list of answers based on a specific quiz attempt - Oct 7 2020
+		//Returns List of answers based on a specific UserQuizScore
 		public List<AnswersBank> findAnswersByAttempt(UserQuizScore attempt){
 			
 			List<AnswersBank> answers = abr.findAnswersByUserScore(attempt);
@@ -46,7 +46,7 @@ public class AnswersBankService {
 		}
 		
 		
-		//Returns a List of only correct answers based on a specific Quiz - Oct 7 2020
+		//Returns a List of only correct answers based on a specific Quiz
 		public List<String> findCorrectAnswersByQuiz(Quiz q){
 			
 			List<QuestionsBank> questions = qbr.findQuestionsByQuiz(q);
@@ -62,14 +62,14 @@ public class AnswersBankService {
 		}
 		
 		
-		//Method to add an answer - Oct 7 2020
+		//Method to add an AnswersBank
 		public AnswersBank addAnswersBank(AnswersBank ab) {
 			ab.setQuestion(qbr.findById(ab.getQuestion().getQuestionId()).get());
 			ab.setUserScore(uqsr.findById(ab.getUserScore().getUserScoreId()).get());
 			return abr.save(ab);
 		}
 		
-		//Method list of answersbanks, MIGHT NOT NEED
+		//Method list of AnswersBank, for debugging
 		public List<AnswersBank> findAll(){
 			return abr.findAll();
 		}
