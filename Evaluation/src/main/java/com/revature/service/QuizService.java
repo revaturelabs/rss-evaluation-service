@@ -53,6 +53,5 @@ public class QuizService {
 	public List<Quiz> getAllQuizzes(){
 		return this.qr.findAll();
 	}
-	
 }
 

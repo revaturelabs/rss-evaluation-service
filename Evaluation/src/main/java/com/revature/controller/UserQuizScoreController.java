@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.revature.entity.UserQuizScore;
 import com.revature.service.UserQuizScoreService;
 
@@ -37,6 +38,4 @@ public class UserQuizScoreController {
 	public List<UserQuizScore> findAttempts(@RequestParam("userEmail") String userEmail, @RequestParam("quizId") long quizId) {
 		return uqss.findByUserAndQuiz(userEmail, quizId);
 	}
-	
-	
 }
