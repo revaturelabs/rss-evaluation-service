@@ -58,8 +58,5 @@ public class QuizController {
 	@ResponseBody()
 	public List<Quiz> getAllQuizzes(){
 		return this.qs.getAllQuizzes();
-	}
-	
-
-	
+	}	
 }
