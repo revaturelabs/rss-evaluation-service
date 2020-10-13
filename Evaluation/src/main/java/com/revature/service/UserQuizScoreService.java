@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.entity.Quiz;
 import com.revature.entity.UserQuizScore;
 import com.revature.repo.QuizRepository;
 import com.revature.repo.UserQuizScoreRepository;

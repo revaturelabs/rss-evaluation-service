@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+
 import com.revature.entity.UserQuizScore;
 import com.revature.service.UserQuizScoreService;
 
@@ -25,8 +26,5 @@ public class UserQuizScoreController {
 		List<Long> takenQuiz = new ArrayList<>();
 		takenQuiz = uqss.getTakenQuiz(uqs.getUserEmail());
 		return takenQuiz;
-		
-	}
-	
-	
+	}	
 }

@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-//import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,9 +24,13 @@ public class Quiz {
 	
 	@Column(name="QUIZ_DESCRIPTION", nullable=true)
 	private String quizDescription;
-	// Group 2 change
+	
 	@Column(name="QUIZ_TOTAL_POINTS", nullable=true)
 	private int quizTotalPoints;
+	
+	@Column(name="QUIZ_DIFFICULTY", nullable=true)
+	private String quizDifficulty;
+	
 	
 	@Column(name="CREATOR_EMAIL", nullable=false)
 	private String creatorEmail;
@@ -46,18 +49,21 @@ public class Quiz {
 		super();
 	}
 	
-	// Group 2 change 
-	public Quiz(long quizId, String quizTopic, String quizDescription, int quizTotalPoints, String creatorEmail, Long subjectId,
-			Subject subject) {
+
+
+	public Quiz(long quizId, String quizTopic, String quizDescription, int quizTotalPoints, String quizDifficulty,
+			String creatorEmail, Long subjectId, Subject subject) {
 		super();
 		this.quizId = quizId;
 		this.quizTopic = quizTopic;
 		this.quizDescription = quizDescription;
 		this.quizTotalPoints = quizTotalPoints;
+		this.quizDifficulty = quizDifficulty;
 		this.creatorEmail = creatorEmail;
 		this.subjectId = subjectId;
 		this.subject = subject;
 	}
+
 
 	public long getQuizId() {
 		return quizId;
@@ -107,23 +113,36 @@ public class Quiz {
 		this.subject = subject;
 	}
 
-	// Group 2 change 
+	
 	public int getQuizTotalPoints() {
 		return quizTotalPoints;
 	}
 
-	// Group 2 change 
+	
 	public void setQuizTotalPoints(int quizTotalPoints) {
 		this.quizTotalPoints = quizTotalPoints;
 	}
+
+	
+	public String getQuizDifficulty() {
+		return quizDifficulty;
+	}
+
+
+	public void setQuizDifficulty(String quizDifficulty) {
+		this.quizDifficulty = quizDifficulty;
+	}
+
 
 
 	@Override
 	public String toString() {
 		return "Quiz [quizId=" + quizId + ", quizTopic=" + quizTopic + ", quizDescription=" + quizDescription
-				+ ", creatorEmail=" + creatorEmail + ", subject=" + subjectId  + "]";
+				+ ", quizTotalPoints=" + quizTotalPoints + ", quizDifficulty=" + quizDifficulty + ", creatorEmail="
+				+ creatorEmail + ", subject=" + subject + "]";
 	}
-	
-	
+
+
+		
 	
 }
