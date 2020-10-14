@@ -42,4 +42,14 @@ public class UserQuizScoreService {
 		}
 		return quizList;
 	}
+	
+	
+	public List<UserQuizScore> findByUserAndQuiz(String userEmail, long quizId){
+		Quiz quiz = qr.findById(quizId).get();
+		return uqsr.findByUserEmailAndQuiz(userEmail, quiz);
+	}
+	
+	public UserQuizScore findById(long id) {
+		return uqsr.findById(id).get();
+	}
 }
