@@ -3,13 +3,16 @@ package com.revature.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +32,7 @@ public class UserQuizScore {
 	
 	@Column(name="SUBMIT_DATE", nullable=false, columnDefinition="TimeStamp")
 	private Date submitDate;
+
 	
 	//We create one transient field for quizId.
 	//It will take input from front-end and do the rest of the process which help to maintain relationship with QUIZZES table.
@@ -38,6 +42,27 @@ public class UserQuizScore {
 	@ManyToOne
     @JoinColumn(name = "QUIZ_ID")
     private Quiz quiz;
+	
+	
+
+	public UserQuizScore() {
+		super();
+		
+	}
+	
+
+
+	public UserQuizScore(long userScoreId, String userEmail, int userScore, Date submitDate, Long quizId, Quiz quiz) {
+		super();
+		this.userScoreId = userScoreId;
+		this.userEmail = userEmail;
+		this.userScore = userScore;
+		this.submitDate = submitDate;
+		this.quizId = quizId;
+		this.quiz = quiz;
+	}
+
+
 
 	public long getUserScoreId() {
 		return userScoreId;
@@ -87,11 +112,10 @@ public class UserQuizScore {
 		this.quizId = quizId;
 	}
 
+
 	@Override
 	public String toString() {
 		return "UserQuizScore [userScoreId=" + userScoreId + ", userEmail=" + userEmail + ", userScore=" + userScore
-				+ ", submitDate=" + submitDate + ", quiz=" + quizId + "]";
+				+ ", submitDate=" + submitDate + ", quizId=" + quizId + "]";
 	}
-	
-	
 }

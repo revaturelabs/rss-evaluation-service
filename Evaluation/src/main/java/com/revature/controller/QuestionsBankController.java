@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import com.revature.beans.Question;
 import com.revature.beans.Result;
+import com.revature.entity.AnswersBank;
 import com.revature.entity.QuestionsBank;
 import com.revature.entity.UserQuizScore;
+import com.revature.service.AnswersBankService;
 import com.revature.service.QuestionsBankService;
 import com.revature.service.UserQuizScoreService;
 
@@ -24,12 +26,14 @@ public class QuestionsBankController {
 	
 	QuestionsBankService qbs;
 	UserQuizScoreService uqss;
+	AnswersBankService abs;
 	
 	//We use constructor auto-wiring to auto-wired multiple services.
 	@Autowired
-	public QuestionsBankController(QuestionsBankService qbService, UserQuizScoreService uqsService) {
+	public QuestionsBankController(QuestionsBankService qbService, UserQuizScoreService uqsService, AnswersBankService abService) {
 		this.qbs=qbService;
 		this.uqss=uqsService;
+		this.abs=abService;
 	}
 
 	//Change endpoint from /add to /admin/add
@@ -74,6 +78,7 @@ public class QuestionsBankController {
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
 	    public Result calculatePoints (@RequestBody List<Question> qList) {
+			System.out.print(qList);
 	    	QuestionsBank qb = null;
 	    	UserQuizScore uqs = new UserQuizScore();
 	    	Result result = new Result();
@@ -104,7 +109,18 @@ public class QuestionsBankController {
 	    	uqs.setQuizId(quizId);
 	    	uqs.setUserScore(totalPoints);
 	    	
-	    	uqss.InsertUserQuizScore(uqs);
+	    	UserQuizScore attempt = uqss.InsertUserQuizScore(uqs);
+	    	
+	    	//Sets Answers into DB, tied to attempt UserQuizScore for future ref.
+	    	AnswersBank temp;
+	    	for(Question q : qList) {
+	    		temp = new AnswersBank();
+	    		temp.setQuestion(qbs.getQuestion(q.getQuestionId()));
+	    		temp.setUserAnswer(q.getSelectedAnswer());
+	    		temp.setUserScore(attempt);
+	    		System.out.println(temp);
+	    		abs.addAnswersBank(temp);
+	    	}
 	    	
 	    	result.setTotalQuestions(totalQuestions);
 	    	result.setCorrectAnswers(correctAnswers);

@@ -28,7 +28,7 @@ public class EvalAppTestMockitoQBS {
 	@BeforeClass
 	public void initialize() throws Exception {
 		subject = new Subject((long)2,"Test");
-		quiz = new Quiz((long)1, "Java Bean", "description", "test@rev.com", (long)2, subject);
+		quiz = new Quiz((long)1, "Java Bean", "description", 100, "Easy", "test@rev.com", (long)2, subject);
 		
 		qb = new QuestionsBank();
 		qb.setQuestionId((long)1);

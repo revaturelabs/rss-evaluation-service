@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+
 import com.revature.entity.UserQuizScore;
 import com.revature.service.UserQuizScoreService;
 
@@ -25,8 +26,10 @@ public class UserQuizScoreController {
 		List<Long> takenQuiz = new ArrayList<>();
 		takenQuiz = uqss.getTakenQuiz(uqs.getUserEmail());
 		return takenQuiz;
-		
 	}
 	
-	
+	@GetMapping(value = "attempts", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<UserQuizScore> findAttempts(@RequestParam("userEmail") String userEmail, @RequestParam("quizId") long quizId) {
+		return uqss.findByUserAndQuiz(userEmail, quizId);
+	}
 }
