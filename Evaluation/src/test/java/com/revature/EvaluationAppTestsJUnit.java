@@ -3,6 +3,7 @@ package com.revature;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -35,11 +36,17 @@ class EvaluationAppTestsJUnit {
 		q.setQuizId(id);
 		q.setQuestion("What is Java?");
 		q.setCorrectAnswer("Object Oriented Programming Language");
-		q.setOption1("Object Oriented Programming Language");
-		q.setOption2("a kind of coffee");
-		q.setOption3("A name of a island");
-		q.setOption4(" An interpreted language");
-		q.setOption5("None of them");
+		//TODO: create a list of options and to it then set it with setter
+		List<String> options = new ArrayList<String>();
+		options.add("option1");
+		options.add("options2");
+		q.setOptions("1");
+		
+//		q.setOption1("Object Oriented Programming Language");
+//		q.setOption2("a kind of coffee");
+//		q.setOption3("A name of a island");
+//		q.setOption4(" An interpreted language");
+//		q.setOption5("None of them");
 		q.setQuestionValue(5);
 		QuestionsBank result = qbc.insertQuestion(q);
 		int value = result.getQuestionValue();

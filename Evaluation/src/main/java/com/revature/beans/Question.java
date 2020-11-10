@@ -2,6 +2,8 @@
 //So that no one hack the JSON object and get the correct answers.
 package com.revature.beans;
 
+import java.util.List;
+
 public class Question {
 	
 	private long questionId;
@@ -10,15 +12,19 @@ public class Question {
 	
 	private String question;
 	
-	private String option1;
+	private String options;
 	
-	private String option2;
+//	private List<String> options;
 	
-	private String option3;
-	
-	private String option4;
-	
-	private String option5;
+//	private String option1;
+//	
+//	private String option2;
+//	
+//	private String option3;
+//	
+//	private String option4;
+//	
+//	private String option5;
 	
 	private String selectedAnswer;
 	
@@ -51,47 +57,65 @@ public class Question {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-
-	public String getOption1() {
-		return option1;
+	
+//	public List<String> getOptions() {
+//		return options;
+//	}
+//
+//	public void setOptions(List<String> options) {
+//		this.options = options;
+//	}
+	
+	public void setOptions(String options) {
+		this.options = options;
 	}
-
-	public void setOption1(String option1) {
-		this.option1 = option1;
-	}
-
-	public String getOption2() {
-		return option2;
-	}
-
-	public void setOption2(String option2) {
-		this.option2 = option2;
-	}
-
-	public String getOption3() {
-		return option3;
-	}
-
-	public void setOption3(String option3) {
-		this.option3 = option3;
-	}
-
-	public String getOption4() {
-		return option4;
-	}
-
-	public void setOption4(String option4) {
-		this.option4 = option4;
-	}
-
-	public String getOption5() {
-		return option5;
-	}
-
-	public void setOption5(String option5) {
-		this.option5 = option5;
+	public String getOptions() {
+		return options;
 	}
 	
+//
+//	public String getOption1() {
+//		return option1;
+//	}
+//
+//	public void setOption1(String option1) {
+//		this.option1 = option1;
+//	}
+//
+//	public String getOption2() {
+//		return option2;
+//	}
+//
+//	public void setOption2(String option2) {
+//		this.option2 = option2;
+//	}
+//
+//	public String getOption3() {
+//		return option3;
+//	}
+//
+//	public void setOption3(String option3) {
+//		this.option3 = option3;
+//	}
+//
+//	public String getOption4() {
+//		return option4;
+//	}
+//
+//	public void setOption4(String option4) {
+//		this.option4 = option4;
+//	}
+//
+//	public String getOption5() {
+//		return option5;
+//	}
+//
+//	public void setOption5(String option5) {
+//		this.option5 = option5;
+//	}
+	
+	
+
 	public String getSelectedAnswer() {
 		return selectedAnswer;
 	}
@@ -111,8 +135,15 @@ public class Question {
 	@Override
 	public String toString() {
 		return "Question [questionId=" + questionId + ", questionValue=" + questionValue + ", question=" + question
-				+ ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3 + ", option4=" + option4
-				+ ", option5=" + option5 + ", selectedAnswer=" + selectedAnswer + ", userEmail=" + userEmail + "]";
+				+ ", options=" + options + ", selectedAnswer=" + selectedAnswer + ", userEmail=" + userEmail + "]";
 	}
+
+	
+//	@Override
+//	public String toString() {
+//		return "Question [questionId=" + questionId + ", questionValue=" + questionValue + ", question=" + question
+//				+ ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3 + ", option4=" + option4
+//				+ ", option5=" + option5 + ", selectedAnswer=" + selectedAnswer + ", userEmail=" + userEmail + "]";
+//	}
 
 }

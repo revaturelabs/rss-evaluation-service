@@ -3,6 +3,8 @@ package com.revature;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -34,8 +36,14 @@ public class EvalAppTestMockitoQBS {
 		qb.setQuestionId((long)1);
 		qb.setQuestionValue(5);
 		qb.setQuestion("Test");
-		qb.setOption1("option1");
-		qb.setOption2("option2");
+		//TODO: create a list of options and to it then set it with setter
+		List<String> options = new ArrayList<String>();
+		options.add("option1");
+		options.add("options2");
+		qb.setOptions(options);
+		
+//		qb.setOption1("option1");
+//		qb.setOption2("option2");
 		qb.setCorrectAnswer("option1");
 		qb.setQuiz(quiz);
 	}

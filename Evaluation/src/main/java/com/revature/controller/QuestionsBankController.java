@@ -146,11 +146,12 @@ public class QuestionsBankController {
 			    q.setQuestionId(qbList.get(i).getQuestionId());
 			    q.setQuestionValue(qbList.get(i).getQuestionValue());
 			    q.setQuestion(qbList.get(i).getQuestion());
-			    q.setOption1(qbList.get(i).getOption1());
-			    q.setOption2(qbList.get(i).getOption2());
-			    q.setOption3(qbList.get(i).getOption3());
-			    q.setOption4(qbList.get(i).getOption4());
-			    q.setOption5(qbList.get(i).getOption5());
+			    q.setOptions(qbList.get(i).getOptions());
+//			    q.setOption1(qbList.get(i).getOption1());
+//			    q.setOption2(qbList.get(i).getOption2());
+//			    q.setOption3(qbList.get(i).getOption3());
+//			    q.setOption4(qbList.get(i).getOption4());
+//			    q.setOption5(qbList.get(i).getOption5());
 			    qList.add(q);
 			}
 			return qList;

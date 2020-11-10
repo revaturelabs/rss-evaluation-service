@@ -1,6 +1,8 @@
 //This is a questionBank entity which going to make QUESTIONS_BANK table in database and create Many-to-One relationship with QUIZZES table.
 package com.revature.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,20 +27,24 @@ public class QuestionsBank {
 	@Column(name="QUESTION", nullable=false)
 	private String question;
 	
-	@Column(name="Option_1", nullable=false)
-	private String option1;
+	//@ManyToOne
+	@Column(name="OPTIONS")
+	private String options;
 	
-	@Column(name="Option_2", nullable=false)
-	private String option2;
-	
-	@Column(name="Option_3", nullable=true)
-	private String option3;
-	
-	@Column(name="Option_4", nullable=true)
-	private String option4;
-	
-	@Column(name="Option_5", nullable=true)
-	private String option5;
+//	@Column(name="Option_1", nullable=false)
+//	private String option1;
+//	
+//	@Column(name="Option_2", nullable=false)
+//	private String option2;
+//	
+//	@Column(name="Option_3", nullable=true)
+//	private String option3;
+//	
+//	@Column(name="Option_4", nullable=true)
+//	private String option4;
+//	
+//	@Column(name="Option_5", nullable=true)
+//	private String option5;
 	
 	@Column(name="CORRECT_ANSWER", nullable=false)
 	private String correctAnswer;
@@ -80,46 +86,59 @@ public class QuestionsBank {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-
-	public String getOption1() {
-		return option1;
+	public void setOptions(String options) {
+		this.options = options;
 	}
-
-	public void setOption1(String option1) {
-		this.option1 = option1;
+	public String getOptions() {
+		return options;
 	}
+	
+//	public void setOptions(List<String> options) {
+//		this.options = options;
+//	}
+//	public List<String> getOptions() {
+//		return options;
+//	}
 
-	public String getOption2() {
-		return option2;
-	}
-
-	public void setOption2(String option2) {
-		this.option2 = option2;
-	}
-
-	public String getOption3() {
-		return option3;
-	}
-
-	public void setOption3(String option3) {
-		this.option3 = option3;
-	}
-
-	public String getOption4() {
-		return option4;
-	}
-
-	public void setOption4(String option4) {
-		this.option4 = option4;
-	}
-
-	public String getOption5() {
-		return option5;
-	}
-
-	public void setOption5(String option5) {
-		this.option5 = option5;
-	}
+//	public String getOption1() {
+//		return option1;
+//	}
+//
+//	public void setOption1(String option1) {
+//		this.option1 = option1;
+//	}
+//
+//	public String getOption2() {
+//		return option2;
+//	}
+//
+//	public void setOption2(String option2) {
+//		this.option2 = option2;
+//	}
+//
+//	public String getOption3() {
+//		return option3;
+//	}
+//
+//	public void setOption3(String option3) {
+//		this.option3 = option3;
+//	}
+//
+//	public String getOption4() {
+//		return option4;
+//	}
+//
+//	public void setOption4(String option4) {
+//		this.option4 = option4;
+//	}
+//
+//	public String getOption5() {
+//		return option5;
+//	}
+//
+//	public void setOption5(String option5) {
+//		this.option5 = option5;
+//	}
 
 	public String getCorrectAnswer() {
 		return correctAnswer;
@@ -146,13 +165,20 @@ public class QuestionsBank {
 		this.quizId = quizId;
 	}
 
-
 	@Override
 	public String toString() {
 		return "QuestionsBank [questionId=" + questionId + ", questionValue=" + questionValue + ", question=" + question
-				+ ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3 + ", option4=" + option4
-				+ ", option5=" + option5 + ", correctAnswer=" + correctAnswer + ", quiz=" + quizId + "]";
+				+ ", options=" + options + ", correctAnswer=" + correctAnswer + ", quizId=" + quizId + "]";
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "QuestionsBank [questionId=" + questionId + ", questionValue=" + questionValue + ", question=" + question
+//				+ ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3 + ", option4=" + option4
+//				+ ", option5=" + option5 + ", correctAnswer=" + correctAnswer + ", quiz=" + quizId + "]";
+//	}
+
 	
 
 }
