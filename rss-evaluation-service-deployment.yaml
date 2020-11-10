@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rss-evaluation-deployment
+  labels:
+    app: rss-evaluation-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rss-evaluation-service
+  template:
+    metadata:
+      labels:
+        app: rss-evaluation-service
+    spec:
+      containers:
+      - name: rss-evaluation-service
+        image: baronvonfroglok/rss-evaluation-service:latest
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 30
