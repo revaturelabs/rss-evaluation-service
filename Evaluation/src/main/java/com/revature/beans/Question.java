@@ -4,6 +4,8 @@ package com.revature.beans;
 
 import java.util.List;
 
+import com.revature.entity.Option;
+
 public class Question {
 	
 	private long questionId;
@@ -12,7 +14,7 @@ public class Question {
 	
 	private String question;
 	
-	private String options;
+	private List<Option> options;
 	
 //	private List<String> options;
 	
@@ -66,10 +68,10 @@ public class Question {
 //		this.options = options;
 //	}
 	
-	public void setOptions(String options) {
-		this.options = options;
+	public void setOptions(List<Option> list) {
+		this.options = list;
 	}
-	public String getOptions() {
+	public List<Option> getOptions() {
 		return options;
 	}
 	

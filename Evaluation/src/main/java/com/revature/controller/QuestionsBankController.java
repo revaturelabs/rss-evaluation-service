@@ -35,6 +35,11 @@ public class QuestionsBankController {
 		this.uqss=uqsService;
 		this.abs=abService;
 	}
+	
+	@GetMapping
+	public List<QuestionsBank> getAllQuestions(){
+		return qbs.findAllQuestions();
+	}
 
 	//Change endpoint from /add to /admin/add
 	 @RequestMapping(value = "/admin/add", method = RequestMethod.POST,
@@ -130,22 +135,25 @@ public class QuestionsBankController {
 		}
 	    
 		//change endpoint from /getquestions to /questions
-		@RequestMapping(value = "/questions", method = RequestMethod.POST,
+		//EDIT: changed requestbody questionbank qb to path variable
+		@RequestMapping(value = "/questions/{id}", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
-	    public List<Question> getQuestionsByQuizId (@RequestBody QuestionsBank qb) {
+	    public List<QuestionsBank> getQuestionsByQuizId (@PathVariable long id) {
+			
 			
 	    	List<QuestionsBank> qbList;
 			List<Question> qList= new ArrayList<Question>();
 			Question q = null;
 			
-	    	qbList = this.qbs.findQuestionsByQuiz(qb);
+	    	qbList = this.qbs.findQuestionsByQuiz(id);
 	    	
 	    	for (int i = 0; i < qbList.size(); i++) {
 	    		q = new Question();
 			    q.setQuestionId(qbList.get(i).getQuestionId());
 			    q.setQuestionValue(qbList.get(i).getQuestionValue());
 			    q.setQuestion(qbList.get(i).getQuestion());
+
 			    q.setOptions(qbList.get(i).getOptions());
 //			    q.setOption1(qbList.get(i).getOption1());
 //			    q.setOption2(qbList.get(i).getOption2());
@@ -154,17 +162,19 @@ public class QuestionsBankController {
 //			    q.setOption5(qbList.get(i).getOption5());
 			    qList.add(q);
 			}
-			return qList;
+//			return qList;
+	    	return this.qbs.findQuestionsByQuiz(id);
 			
 		}
 		
 		//change endpoint from /getquestionsadmin to /admin/questions
-		@RequestMapping(value = "/admin/questions", method = RequestMethod.POST,
+		//EDIT: changed requestbody questionbank qb to path variable
+		@RequestMapping(value = "/admin/questions/{id}", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody()
-	    public List<QuestionsBank> getQuestionsByQuizIdAdmin (@RequestBody QuestionsBank qb) {
+	    public List<QuestionsBank> getQuestionsByQuizIdAdmin (@PathVariable long id) {
 	    
-			return this.qbs.findQuestionsByQuiz(qb);
+			return this.qbs.findQuestionsByQuiz(id);
 			
 		}
 }

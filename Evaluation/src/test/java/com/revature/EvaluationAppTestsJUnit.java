@@ -40,7 +40,8 @@ class EvaluationAppTestsJUnit {
 		List<String> options = new ArrayList<String>();
 		options.add("option1");
 		options.add("options2");
-		q.setOptions("1");
+		q.setOptions(options);
+		//q.setOptions("1");
 		
 //		q.setOption1("Object Oriented Programming Language");
 //		q.setOption2("a kind of coffee");

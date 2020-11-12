@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,9 +28,9 @@ public class QuestionsBank {
 	@Column(name="QUESTION", nullable=false)
 	private String question;
 	
-	//@ManyToOne
-	@Column(name="OPTIONS")
-	private String options;
+	@OneToMany(mappedBy="qb")
+	private List<Option> options;
+
 	
 //	@Column(name="Option_1", nullable=false)
 //	private String option1;
@@ -51,7 +52,7 @@ public class QuestionsBank {
 	
 	//We create one transient field for quizId.
 	//It will take input from front-end and do the rest of the process which help to maintain relationship with QUIZZES table.
-	private transient Long quizId;
+	//private transient Long quizId;
 		
 	//We create unidirectional Many-To-One relationship from QUESTIONS_BANK table to QUIZZES table where quiz_id is a foreign key in QUESTIONS_BANK table
 	@ManyToOne
@@ -86,19 +87,13 @@ public class QuestionsBank {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	public void setOptions(String options) {
+	public void setOptions(List<Option> options) {
 		this.options = options;
 	}
-	public String getOptions() {
+	public List<Option> getOptions() {
 		return options;
 	}
 	
-//	public void setOptions(List<String> options) {
-//		this.options = options;
-//	}
-//	public List<String> getOptions() {
-//		return options;
-//	}
 
 //	public String getOption1() {
 //		return option1;
@@ -157,18 +152,18 @@ public class QuestionsBank {
 		this.quiz = quiz;
 	}
 
-	public Long getQuizId() {
-		return quizId;
-	}
-
-	public void setQuizId(Long quizId) {
-		this.quizId = quizId;
-	}
+//	public Long getQuizId() {
+//		return quizId;
+//	}
+//
+//	public void setQuizId(Long quizId) {
+//		this.quizId = quizId;
+//	}
 
 	@Override
 	public String toString() {
 		return "QuestionsBank [questionId=" + questionId + ", questionValue=" + questionValue + ", question=" + question
-				+ ", options=" + options + ", correctAnswer=" + correctAnswer + ", quizId=" + quizId + "]";
+				+ ", options=" + options + ", correctAnswer=" + correctAnswer + "]";
 	}
 
 

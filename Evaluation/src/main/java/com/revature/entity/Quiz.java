@@ -1,6 +1,8 @@
 //This is a quiz entity which going to make QUIZZES table in database and create Many-to-One relationship with SUBJECTS table.
 package com.revature.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="QUIZZES")
@@ -43,6 +48,10 @@ public class Quiz {
 	@ManyToOne
     @JoinColumn(name = "SUBJECT_ID")
     private Subject subject;
+	
+	@OneToMany(mappedBy="quiz")
+	@JsonIgnoreProperties({"quiz"})
+	private List<QuestionsBank> questions;
 	
 
 	public Quiz() {
@@ -134,12 +143,23 @@ public class Quiz {
 	}
 
 
+	public List<QuestionsBank> getQuestions() {
+		return questions;
+	}
+
+
+
+	public void setQuestions(List<QuestionsBank> questions) {
+		this.questions = questions;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Quiz [quizId=" + quizId + ", quizTopic=" + quizTopic + ", quizDescription=" + quizDescription
 				+ ", quizTotalPoints=" + quizTotalPoints + ", quizDifficulty=" + quizDifficulty + ", creatorEmail="
-				+ creatorEmail + ", subject=" + subject + "]";
+				+ creatorEmail + ", subject=" + subject + ", questions=" + questions + "]";
 	}
 
 
