@@ -20,9 +20,16 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+		<coverage.reports.dir>target/coverage-reports</coverage.reports.dir>
+		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.projectKey>201026java_rss-evaluation-service</sonar.projectKey>
+		<sonar.organization>201026java</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.exclusions>src/**/models/**/*</sonar.exclusions>
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -131,6 +138,34 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+			    <groupId>org.jacoco</groupId>
+			    <artifactId>jacoco-maven-plugin</artifactId>
+			    <version>0.8.4</version>
+			    <configuration>
+				<outputDirectory>${coverage.reports.dir}</outputDirectory>
+				<excludes>
+				    <exclude>/entities/</exclude>
+				    <exclude>/DTOs/</exclude>
+				</excludes>
+			    </configuration>
+			    <executions>
+				<execution>
+				    <goals>
+					<goal>prepare-agent</goal>
+				    </goals>
+				</execution>
+				<execution>
+				    <id>report</id>
+				    <phase>test</phase>
+				    <goals>
+					<goal>report</goal>
+				    </goals>
+				</execution>
+			    </executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
