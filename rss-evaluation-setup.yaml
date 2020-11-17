@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: rss-evaluation
-        image: baronvonfroglok/rss-evaluation:latest
+        image: 855430746673.dkr.ecr.us-east-1.amazonaws.com/matt-oberlies-00000916-rss-evaluation:latest
         ports:
         - containerPort: 8080
         livenessProbe:
