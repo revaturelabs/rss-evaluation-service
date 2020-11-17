@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.entity.QuestionsBank;
+import com.revature.entity.Quiz;
 import com.revature.repo.QuestionsBankRepository;
 import com.revature.repo.QuizRepository;
 import com.revature.repo.SubjectRepository;
@@ -47,8 +48,13 @@ public class QuestionsBankService {
 	//we get only quizId from front-end and then we find quiz using that quizId. 
 	//Then we set that quiz in the questionsbank object to insert that record into database.
 	public QuestionsBank InsertQuestion(QuestionsBank qb) {
-		qb.setQuiz(qr.findById(qb.getQuiz().getQuizId()).get()); 
+		
+		long quiz_id = qb.getQuizId();
+		Quiz quiz = qr.findById(quiz_id).get();
+		qb.setQuiz(quiz); 
+		
 		return qbr.save(qb);
+		
 	}
 	
 	//Method to delete question by question ID.
