@@ -37,9 +37,6 @@ public class QuestionsBank {
 	)
 	private List<Option> options = new ArrayList<Option>();
 	
-	@Column(name="CORRECT_ANSWER", nullable=false)
-	private String correctAnswer;
-	
 	//We create one transient field for quizId.
 	//It will take input from front-end and do the rest of the process which help to maintain relationship with QUIZZES table.
 	//private transient Long quizId;
@@ -109,15 +106,6 @@ public class QuestionsBank {
 	}
 
 
-	public String getCorrectAnswer() {
-		return correctAnswer;
-	}
-
-
-	public void setCorrectAnswer(String correctAnswer) {
-		this.correctAnswer = correctAnswer;
-	}
-
 
 	public Quiz getQuiz() {
 		return quiz;
@@ -132,7 +120,7 @@ public class QuestionsBank {
 	@Override
 	public String toString() {
 		return "QuestionsBank [questionId=" + questionId + ", questionValue=" + questionValue + ", question=" + question
-				 + ", correctAnswer=" + correctAnswer + "]";
+				 + ", correctAnswer="  + "]";
 	}
 
 	

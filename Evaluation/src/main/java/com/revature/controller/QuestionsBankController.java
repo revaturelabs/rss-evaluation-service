@@ -73,6 +73,7 @@ public class QuestionsBankController {
 	    		List<Option> options = current.getOptions();
 	    		
 	    		for(Option op : options) {
+	    			System.out.println(op.getCorrect());
 	    			op.setQb(current);
 	    		}
 
@@ -95,7 +96,8 @@ public class QuestionsBankController {
 	    	return qbList1;
 			
 		}
-		
+
+/*
 		//change endpoint from /submitQuiz to /forward
 		@RequestMapping(value = "/forward", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -152,6 +154,6 @@ public class QuestionsBankController {
 	    	return result;
 		}
 	    
-		
+*/	
 		
 }

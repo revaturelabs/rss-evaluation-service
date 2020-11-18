@@ -22,7 +22,10 @@ public class Option {
 	@JoinColumn(name = "QUESTION_ID")
 	private QuestionsBank qb;
 	
-	Option(){
+	@Column(name="correct")
+	private boolean correct;
+	
+	public Option(){
 		super();
 	}
 
@@ -51,7 +54,14 @@ public class Option {
 	}
 
 	
-	
+	public boolean getCorrect() {
+		return correct;
+	}
+
+	public void setCorrect(boolean correct) {
+		this.correct = correct;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
