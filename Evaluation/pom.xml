@@ -29,6 +29,20 @@
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-kubernetes-discovery -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-kubernetes-discovery</artifactId>
+			<version>1.1.7.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-kubernetes-core -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-kubernetes-core</artifactId>
+			<version>1.1.7.RELEASE</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -109,7 +123,7 @@
 
 
 
-		
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -138,32 +152,32 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
-			    <groupId>org.jacoco</groupId>
-			    <artifactId>jacoco-maven-plugin</artifactId>
-			    <version>0.8.4</version>
-			    <configuration>
-				<outputDirectory>${coverage.reports.dir}</outputDirectory>
-				<excludes>
-				    <exclude>/entities/</exclude>
-				    <exclude>/DTOs/</exclude>
-				</excludes>
-			    </configuration>
-			    <executions>
-				<execution>
-				    <goals>
-					<goal>prepare-agent</goal>
-				    </goals>
-				</execution>
-				<execution>
-				    <id>report</id>
-				    <phase>test</phase>
-				    <goals>
-					<goal>report</goal>
-				    </goals>
-				</execution>
-			    </executions>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.4</version>
+				<configuration>
+					<outputDirectory>${coverage.reports.dir}</outputDirectory>
+					<excludes>
+						<exclude>/entities/</exclude>
+						<exclude>/DTOs/</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>
