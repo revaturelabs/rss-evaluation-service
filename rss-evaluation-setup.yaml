@@ -34,7 +34,6 @@ spec:
           initialDelaySeconds: 15
           periodSeconds: 3
           failureThreshold: 5
-
 ---
 
 apiVersion: v1
