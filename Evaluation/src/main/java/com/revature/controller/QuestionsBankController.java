@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.revature.beans.Question;
 import com.revature.beans.Result;
 import com.revature.entity.AnswersBank;
+import com.revature.entity.Option;
 import com.revature.entity.QuestionsBank;
 import com.revature.entity.UserQuizScore;
 import com.revature.service.AnswersBankService;
@@ -24,14 +25,13 @@ import com.revature.util.LogThis;
 @RequestMapping(value="/question")
 public class QuestionsBankController {
 	
-	QuestionsBankService qbs;
+	@Autowired QuestionsBankService qbs;
 	UserQuizScoreService uqss;
 	AnswersBankService abs;
 	
 	//We use constructor auto-wiring to auto-wired multiple services.
 	@Autowired
-	public QuestionsBankController(QuestionsBankService qbService, UserQuizScoreService uqsService, AnswersBankService abService) {
-		this.qbs=qbService;
+	public QuestionsBankController( UserQuizScoreService uqsService, AnswersBankService abService) {
 		this.uqss=uqsService;
 		this.abs=abService;
 	}
@@ -64,15 +64,40 @@ public class QuestionsBankController {
 	    @ResponseBody()
 	    public List<QuestionsBank> insertAllQuestions (@RequestBody List<QuestionsBank> qbList) {
 	    	List<QuestionsBank> qbList1 = new ArrayList<QuestionsBank>();
+	    	System.out.println("start of insert");
 	    	for (int i = 0; i < qbList.size(); i++) {
-	    		qbList1.add(qbs.InsertQuestion(qbList.get(i)));
+	    		QuestionsBank current = qbList.get(i);
+	    		
+	    		
+	    		System.out.println(current);
+	    		List<Option> options = current.getOptions();
+	    		
+	    		for(Option op : options) {
+	    			System.out.println(op.getCorrect());
+	    			op.setQb(current);
+	    		}
+
+	    		
+	    		QuestionsBank res = qbs.InsertQuestion(current);
+	    		qbList1.add(res);
 	    	}
+	    	
+	    	
+	    	for(QuestionsBank new_qb : qbList1) {
+	    		new_qb.setQuiz(null);
+	    		List<Option> m_options = new_qb.getOptions();
+	    		for(Option op : m_options) {
+	    			op.setQb(null);
+	    		}
+    		}
+	    	
 	    	//Log4j
 	    	LogThis.LogIt("info","Multiple Question added");
 	    	return qbList1;
 			
 		}
-		
+
+/*
 		//change endpoint from /submitQuiz to /forward
 		@RequestMapping(value = "/forward", method = RequestMethod.POST,
 	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -129,41 +154,6 @@ public class QuestionsBankController {
 	    	return result;
 		}
 	    
-		//change endpoint from /getquestions to /questions
-		@RequestMapping(value = "/questions", method = RequestMethod.POST,
-	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	    @ResponseBody()
-	    public List<Question> getQuestionsByQuizId (@RequestBody QuestionsBank qb) {
-			
-	    	List<QuestionsBank> qbList;
-			List<Question> qList= new ArrayList<Question>();
-			Question q = null;
-			
-	    	qbList = this.qbs.findQuestionsByQuiz(qb);
-	    	
-	    	for (int i = 0; i < qbList.size(); i++) {
-	    		q = new Question();
-			    q.setQuestionId(qbList.get(i).getQuestionId());
-			    q.setQuestionValue(qbList.get(i).getQuestionValue());
-			    q.setQuestion(qbList.get(i).getQuestion());
-			    q.setOption1(qbList.get(i).getOption1());
-			    q.setOption2(qbList.get(i).getOption2());
-			    q.setOption3(qbList.get(i).getOption3());
-			    q.setOption4(qbList.get(i).getOption4());
-			    q.setOption5(qbList.get(i).getOption5());
-			    qList.add(q);
-			}
-			return qList;
-			
-		}
+*/	
 		
-		//change endpoint from /getquestionsadmin to /admin/questions
-		@RequestMapping(value = "/admin/questions", method = RequestMethod.POST,
-	            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	    @ResponseBody()
-	    public List<QuestionsBank> getQuestionsByQuizIdAdmin (@RequestBody QuestionsBank qb) {
-	    
-			return this.qbs.findQuestionsByQuiz(qb);
-			
-		}
 }

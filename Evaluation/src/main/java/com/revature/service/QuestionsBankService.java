@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.entity.QuestionsBank;
+import com.revature.entity.Quiz;
 import com.revature.repo.QuestionsBankRepository;
 import com.revature.repo.QuizRepository;
 import com.revature.repo.SubjectRepository;
@@ -32,9 +33,10 @@ public class QuestionsBankService {
 	
 	//Methods to find questions by quiz.
 	//we get only quizId from front-end and then we find object of quiz using that quizId. So that we use it to find the questions by quiz.
-	public List<QuestionsBank> findQuestionsByQuiz(QuestionsBank qb){
-		qb.setQuiz(qr.findById(qb.getQuizId()).get());
-		return qbr.findQuestionsByQuiz(qb.getQuiz());	
+	//EDIT: changing parameter to int, for direct quiz id comparison
+	public List<QuestionsBank> findQuestionsByQuiz(long id){
+		//qb.setQuiz(qr.findById(qb.getQuiz().getQuizId()).get());
+		return qbr.findQuestionsByQuiz(qr.findById(id).orElse(null));	
 	}
 	
 	//Method to get question by question ID.
@@ -46,8 +48,13 @@ public class QuestionsBankService {
 	//we get only quizId from front-end and then we find quiz using that quizId. 
 	//Then we set that quiz in the questionsbank object to insert that record into database.
 	public QuestionsBank InsertQuestion(QuestionsBank qb) {
-		qb.setQuiz(qr.findById(qb.getQuizId()).get()); 
+		
+		long quiz_id = qb.getQuizId();
+		Quiz quiz = qr.findById(quiz_id).get();
+		qb.setQuiz(quiz); 
+		
 		return qbr.save(qb);
+		
 	}
 	
 	//Method to delete question by question ID.

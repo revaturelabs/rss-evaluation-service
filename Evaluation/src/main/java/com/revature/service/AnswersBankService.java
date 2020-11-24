@@ -47,19 +47,19 @@ public class AnswersBankService {
 		
 		
 		//Returns a List of only correct answers based on a specific Quiz
-		public List<String> findCorrectAnswersByQuiz(Quiz q){
-			
-			List<QuestionsBank> questions = qbr.findQuestionsByQuiz(q);
-	
-			List<String> correctAnswers = new ArrayList<>();
-			
-			for(QuestionsBank qb : questions) {
-				
-				correctAnswers.add(qb.getCorrectAnswer());
-			}
-			
-			return correctAnswers;		
-		}
+//		public List<String> findCorrectAnswersByQuiz(Quiz q){
+//			
+//			List<QuestionsBank> questions = qbr.findQuestionsByQuiz(q);
+//	
+//			List<String> correctAnswers = new ArrayList<>();
+//			
+//			for(QuestionsBank qb : questions) {
+//				
+//				correctAnswers.add(qb);
+//			}
+//			
+//			return correctAnswers;		
+//		}
 		
 		
 		//Method to add an AnswersBank
